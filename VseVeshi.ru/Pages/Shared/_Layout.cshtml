@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VseVeshi.ru</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/VseVeshi.ru.styles.css" asp-append-version="true" />
+</head>
+<body>
+    @{
+        if (ViewData["Title"].ToString() != "Home page" && ViewData["Title"].ToString() != "О сервисе")
+        {
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-light mb-3">
+                    <div class="container">
+                        <a class="navbar-brand catalog-brand-size" asp-area="" asp-page="/Index">
+                            <img src="Images/brandBlack.svg">
+                        </a>
+                        <div class="d-sm-inline-flex justify-content-between">
+                            <form class="d-flex searchShadow" role="search">
+                                <input class="form-control catalog-search-left py-2" type="search" placeholder="Хочу арендовать" aria-label="Search">
+                                <button class="p-1 bg-white catalog-search-right" type="submit"><img class="catalogFind" src="Images/catalogFind.svg"></button>
+                            </form>
+                        </div>
+                        <div>
+                            <a class="normal-link" asp-area="" asp-page="/Cart">
+                                <img src="Images/cart.svg">
+                                <span>
+                                    Корзина
+                                </span>
+                            </a>
+                        </div>
+                        <button class="enter-btn-container d-flex justify-content-center align-items-center border-0">
+                            <span class="enter-btn">
+                                Войти
+                            </span>
+                        </button>
+                    </div>
+                </nav>
+                <div class="container d-flex justify-content-evenly background-catalog">
+                    <div>
+                        <span>
+                            Медицина
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Смокинг
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Платья
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Туризм
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Для отдыха
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Для мероприятий
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Ещё
+                        </span>
+                    </div>
+
+                </div>
+            </header>
+        }
+    }
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footerc text-light">
+        <div class="mt-2 innerFooter pt-5" style="height: 315px;">
+            <div class="container p-0">
+                <div class="d-flex justify-content-evenly">
+                    <div>
+                        <table>
+                            @* Арендаторам *@
+                            <tr>
+                                <td class="footerColName">
+                                    Арендаторам
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    О сервисе
+                                </td>
+                            </tr>
+                         </table>
+                    </div>
+                    <div>
+                        <table>
+                            @* О компании *@
+                            <tr>
+                                <td>
+                                    О компании
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Документы
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Контакты
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    Категории
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Медицина
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Смокинг
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Платья туризм
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Для отдыха
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Для мероприятий
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-4 pt-5">
+                    &copy; 2025 - ВсеВещи.ру - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                </div>
+            </div>  
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

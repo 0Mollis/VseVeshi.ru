@@ -1,0 +1,663 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem green;
+}
+
+.nav-link:hover {
+    color: #e1e1e1e1;
+    cursor: pointer;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.footerc {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    background: #26af34;
+    height: 323px;
+}
+
+.innerFooter {
+    background: linear-gradient(95.7deg, rgba(20, 121, 30, 1) 0%, rgba(39, 133, 49, 1) 34.09997522830963%, rgba(20, 121, 30, 1) 100%);
+}
+
+.footerColName {
+}
+
+.image {
+    position: absolute;
+    top: 0;
+}
+
+.z-1 {
+    z-index: 1;
+}
+
+.z-n1 {
+    z-index: -1;
+}
+
+.headerInfo {
+    left: 13%;
+    width: 30%;
+}
+
+.headerText {
+    display: flex;
+    color: #ffffff;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-shadow: 1px 1px 0px black;
+}
+
+.headerImg {
+    right: 15px;
+    top: 15px;
+}
+
+.searchText {
+    color: #ffffff;
+    font-family: "Inter-SemiBold", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 1px 1px 0px black;
+}
+
+.headerSearchImg {
+    height: 40px;
+    width: 40px;
+}
+
+.content {
+    margin-top: 17%;
+}
+
+.zagRent {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.backKatalogImage {
+    background-image: url(../Images/katalogLine.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 448px;
+}
+
+.catalog_margin {
+}
+
+.zagKatalog {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    text-shadow: 1px 1px 1px black;
+}
+
+.rentCard {
+    height: 228px;
+    width: 460px;
+    margin-right: .5rem !important;
+    margin-left: .5rem !important;
+    margin-top: .5rem !important;
+    margin-bottom: .5rem !important;
+}
+
+.rentCardName {
+    color: #000000;
+    text-align: left;
+    font-family: "Jost-Medium", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.cardText {
+    color: #000000;
+    text-align: justify;
+    font-family: "Inter-Light", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.btnEnter {
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.linkServis {
+    color: #ffffff;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.buttons {
+    z-index: 5;
+}
+
+.katalogImgSize {
+    width: 65%;
+    height: 65%;
+}
+
+/**/
+.catalog-container {
+    display: flex;
+    align-items: center;
+    width: 65.1%;
+    overflow: hidden;
+    position: relative;
+}
+
+.catalog {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.catalog-item {
+    margin-right: 1.1rem;
+    margin-left: 1.1rem;
+    cursor: pointer;
+}
+
+.catalog-circus {
+    background: #ffffff;
+    border-radius: 50%;
+    width: 156px;
+    height: 156px;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+    .catalog-circus:hover {
+        background: #E0E0E0;
+    }
+
+.catalog-text {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px black;
+}
+
+.scroll-button {
+    background: #f4f4f4;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: 0px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+    .scroll-button:hover {
+        background-color: #E0E0E0;
+    }
+
+.zagRng {
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.forCard {
+    width: 244px;
+    height: 305px;
+    border: 0;
+    border-radius: 0;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    height: 335px;
+}
+
+.card-title-font {
+    color: #000000;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card-title-font-days {
+    color: rgba(0, 0, 0, 0.4);
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card-text {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    width: 237px;
+    height: 37px;
+}
+
+.imgForCard {
+    height: 210px
+}
+
+.margin-foter {
+    margin-bottom: 21%;
+}
+
+.aboutUs-zag {
+    color: #182013;
+    text-align: left;
+    font-family: "Inter-Bold", sans-serif;
+    font-size: 52px;
+    line-height: 121.06%;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.aboutUs-str {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Light", sans-serif;
+    font-size: 20px;
+    line-height: 121.06%;
+    font-weight: 300;
+    margin-top: 50px;
+}
+
+.aboutUs-fot {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-SemiBold", sans-serif;
+    font-size: 20px;
+    line-height: 121.06%;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 31%;
+}
+
+.catalog-brand-ssize {
+    width: 224px;
+    height: 62px;
+}
+
+.catalogFind {
+    border: 0px;
+    width: 39px;
+    height: 39px;
+}
+
+.searchShadow {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.catalog-search-left {
+    width: 700px;
+    border-right: 0px;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.catalog-search-right {
+    border: 1px solid #ced4da;
+    border-left: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #ced4da;
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.normal-link {
+    text-decoration: none;
+    color: black;
+}
+
+    .normal-link:hover {
+        color: black;
+    }
+
+.enter-btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    color: #000000;
+    text-align: center;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.enter-btn-container {
+    width: 126px;
+    height: 55px;
+    background: #effff1;
+    border-radius: 5px;
+}
+
+.background-catalog {
+    background: #effff1;
+}
+
+.select-all:focus {
+    border: 1px solid black;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.select-date {
+    width: 162px;
+}
+
+.select-cost {
+    width: 140px;
+}
+
+.select-brand {
+    width: 135px;
+}
+
+.select-color {
+    width: 130px;
+}
+
+.select-pol {
+    width: 125px;
+}
+
+.f-row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.item-img {
+    width: 700px;
+    height: 600px;
+    box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.5);
+}
+
+.zakaz {
+    width: 420px;
+    height: 361px;
+    box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.5);
+}
+
+.info-arend {
+    width: 420px;
+    height: 293px;
+    box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.5);
+}
+
+.description {
+    width: 700px;
+    height: 261px;
+    box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.5);
+}
+
+.item-info {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.item-description {
+    color: #000000;
+    text-align: justify;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.font-transp {
+    color: #8b8b8b;
+    text-align: left;
+    font-family: "Inter-Light", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.item-data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.zakaz-name {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.Chost {
+    color: #000000;
+    font-family: "Inter-SemiBold", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.how-day {
+    color: rgba(0, 0, 0, 0.36);
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.quan {
+    color: #acabab;
+    text-align: center;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.how-have {
+    color: #acabab;
+    text-align: center;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.days {
+    color: #acabab;
+    text-align: center;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.quantity-min:disabled {
+    background: #effff1;
+    width: 25px;
+    height: 25px;
+    border: 0px;
+}
+
+.quantity-plus {
+    background: #dcffe1;
+    width: 25px;
+    height: 25px;
+    border: 0px;
+}
+
+.btn-size {
+    height: 73px;
+}
+
+.arend-zag {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.arend-name {
+    color: #000000;
+    text-align: justify;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.btn-color {
+    background: #dcffe1;
+}
+
+.btn-messag-size {
+    width: 325px;
+    height: 70px;
+    border: 0px;
+}
+
+.btn-call {
+    border: 0px;
+    width: 70px;
+    height: 70px;
+}
+
+.cart-img-size {
+    width: 60px;
+    height: 60px;
+}
+
+.btn-delite {
+    border: 0px;
+    background-color: white;
+}
+
+.cart-font-size {
+    font-size: 13px;
+}
+
+.hr-color {
+    border: none;
+}
+
+.cart-zag {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.arend-giver {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Light", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.arend-giver-name {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.chose-date {
+    color: #414141;
+    text-align: center;
+    font-family: "Inter-Light", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.item-card-name {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.chost-font {
+    color: #a6a6a6;
+    text-align: right;
+    font-family: "Inter-Light", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.btn-cart-text {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Inter-Medium", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    width: 170px;
+    height: 50px;
+}
+
+.how-have-color {
+    color: #acabab;
+}
+
+.form-check-input:checked {
+    background-color: rgba(20, 121, 30, 1);
+    border-color: rgba(20, 121, 30, 1);
+}
+/*.footerContainer{
+    max-width: 211px;
+}*/

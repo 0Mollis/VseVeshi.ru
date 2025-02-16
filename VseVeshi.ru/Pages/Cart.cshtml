@@ -1,0 +1,76 @@
+﻿@page
+@model ВсеВещи.ру.Pages.CartModel
+@{
+    ViewData["Title"] = "Корзина";
+}
+<div class="container mt-5 margin-foter">
+    <span class="cart-zag">
+        Корзина
+    </span>
+    <div class="mt-2 d-flex flex-column">
+        <span class="arend-giver">Арендодатель:</span>
+        <span class="arend-giver-name">Димон</span>
+    </div>
+    <div class="mt-3">
+        <button class="btn-color btn p-2 chose-date">Выберите дату и время</button>
+    </div>
+    <div class="mt-2">
+        <div class="d-flex justify-content-between flex-column w-75">
+            <div>
+                <img class="cart-img-size" src="Images/palatka.png">
+                <span class="item-card-name">Туристическая палатка High Peak Monodome XL</span>
+            </div>
+            <div class="d-flex flex-column align-items-end">
+                <button class="btn-delite mb-4"><img src="Images/close.svg"></button>
+                <div class="d-flex flex-row">
+                    <button class="quantity-plus d-flex align-items-center mbutton-quantity" onclick="quantity_minus();"><img src="Images/minus.svg"></button>
+                    <span class="mx-2 quantity-col">1</span>
+                    <button class="quantity-plus d-flex align-items-center button-quantity" onclick="quantity_plus();"><img src="Images/plus.svg"></button>
+                </div>
+                <div class="d-flex">
+                    <span class="how-have cart-font-size">Доступно</span><span class="maxquantity how-have mx-1 cart-font-size"> 10</span>
+                </div>
+                <span class="mt-3 chost-font">Аренда</span>
+                <span class="">
+                    1250
+                </span>
+            </div>
+            <hr class="w-100 hr-color">
+        </div>
+        <div class="d-flex flex-column w-75">
+            <div class="d-flex justify-content-between my-3 align-items-center">
+                <span>Расчётная стоимость</span>
+                <div class="d-flex flex-column align-items-end">
+                    <span class="chost-font">Аренда</span>
+                    <span>
+                        1250
+                    </span>
+                </div>
+            </div>
+            
+            <hr class="w-100 hr-color">
+        </div>
+    </div>
+    <div>
+        <div class="d-flex flex-column">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Самовывоз
+                </label>
+            </div>
+            <span class="cart-font-size how-have-color">С адреса: г Пенза, ул Новосёловка, д 5</span>
+        </div>
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+                Доставка по г. Пенза
+            </label>
+        </div>
+        <div class="mt-4">
+            <button class="btn btn-warning btn-cart-text py-2">
+                Арендовать
+            </button>
+        </div>
+    </div>
+</div>
