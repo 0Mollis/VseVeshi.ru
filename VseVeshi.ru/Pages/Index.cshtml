@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home page";   
 }
 
 <header>
@@ -109,102 +109,24 @@
         <button class="scroll-button left mx-4" onclick="scrollCatalog(-1)"><img src="Images/buttonLeft.svg"></button>
         <div class="catalog-container">
             <div class="catalog my-3">
-                <a asp-area="" asp-page="/Catalog">
-                    <div class="catalog-item d-flex flex-column">
-                        <div class="catalog-circus d-flex justify-content-center align-items-center">
-                            <img class="katalogImgSize" src="Images/otdih.svg">
-                        </div>
-                        <div class="mt-2 catalog-text">
-                            <p>
-                                Для отдыха
-                            </p>
-                        </div>
-                    </div>
-                </a>
 
-
-
-                <div class="catalog-item d-flex flex-column">
-                    <div class="catalog-circus d-flex justify-content-center align-items-center">
-                        <img class="katalogImgSize" src="Images/otdih.svg">
-                    </div>
-                    <div class="mt-2 catalog-text">
-                        <p>
-                            Для отдыха
-                        </p>
-                    </div>
-                </div>
-                <div class="catalog-item d-flex flex-column">
-                    <div class="catalog-circus d-flex justify-content-center align-items-center">
-                        <img class="katalogImgSize" src="Images/otdih.svg">
-                    </div>
-                    <div class="mt-2 catalog-text">
-                        <p>
-                            Для отдыха
-                        </p>
-                    </div>
-                </div>
-                <div class="catalog-item d-flex flex-column">
-                    <div class="catalog-circus d-flex justify-content-center align-items-center">
-                        <img class="katalogImgSize" src="Images/otdih.svg">
-                    </div>
-                    <div class="mt-2 catalog-text">
-                        <p>
-                            Для отдыха
-                        </p>
-                    </div>
-                </div>
-                <div class="catalog-item d-flex flex-column">
-                    <div class="catalog-circus d-flex justify-content-center align-items-center">
-                        <img class="katalogImgSize" src="Images/otdih.svg">
-                    </div>
-                    <div class="mt-2 catalog-text">
-                        <p>
-                            Для отдыха
-                        </p>
-                    </div>
-                </div>
-                <div class="catalog-item d-flex flex-column">
-                    <div class="catalog-circus d-flex justify-content-center align-items-center">
-                        <img class="katalogImgSize" src="Images/otdih.svg">
-                    </div>
-                    <div class="mt-2 catalog-text">
-                        <p>
-                            Для отдыха
-                        </p>
-                    </div>
-                </div>
-                <div class="catalog-item d-flex flex-column">
-                    <div class="catalog-circus d-flex justify-content-center align-items-center">
-                        <img class="katalogImgSize" src="Images/otdih.svg">
-                    </div>
-                    <div class="mt-2 catalog-text">
-                        <p>
-                            Для отдыха
-                        </p>
-                    </div>
-                </div>
-                <div class="catalog-item d-flex flex-column">
-                    <div class="catalog-circus d-flex justify-content-center align-items-center">
-                        <img class="katalogImgSize" src="Images/otdih.svg">
-                    </div>
-                    <div class="mt-2 catalog-text">
-                        <p>
-                            Для отдыха
-                        </p>
-                    </div>
-                </div>
-                <div class="catalog-item d-flex flex-column">
-                    <div class="catalog-circus d-flex justify-content-center align-items-center">
-                        <img class="katalogImgSize" src="Images/otdih.svg">
-                    </div>
-                    <div class="mt-2 catalog-text">
-                        <p>
-                            Для отдыха
-                        </p>
-                    </div>
-                </div>
-
+                @{
+                    foreach(var catalog in Model.catalog)
+                    {
+                        <a asp-area="" asp-page="/Catalog">
+                            <div class="catalog-item d-flex flex-column">
+                                <div class="catalog-circus d-flex justify-content-center align-items-center">
+                                    <img class="katalogImgSize" src="@catalog.Image">
+                                </div>
+                                <div class="mt-2 catalog-text">
+                                    <p>
+                                        @catalog.Name
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
             </div>
         </div>
         <button class="scroll-button right mx-4" onclick="scrollCatalog(1)"><img src="Images/buttonRight.svg"></button>
