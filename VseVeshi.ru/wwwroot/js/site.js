@@ -20,6 +20,8 @@ function scrollCatalog(direction) {
     // Устанавливаем новое положение каталога
     catalog.style.transform = `translateX(-${scrollAmount}px)`;
 }
+
+if (document.querySelector('.quantity-col') != null) {
 check_quantity();
 function quantity_plus() {
     var quantity = document.querySelector('.quantity-col');
@@ -52,6 +54,8 @@ function check_quantity() {
         mbtn.classList.add('quantity-plus')
     }
 }
+}
+
 
 function quantity_minus() {
     var quantity = document.querySelector('.quantity-col');
@@ -59,3 +63,17 @@ function quantity_minus() {
     quantity.textContent = Number(quantity.textContent) - 1;
     check_quantity();
 }
+
+$.ajax({
+    url: 'api/catalog',
+    method: 'GET'
+}).done(function (data) {
+    for(cat of data)
+    {
+        if (cat.catalogs == 'Для отдыха') {
+            console.log(cat);
+        }
+    }
+    
+
+})
