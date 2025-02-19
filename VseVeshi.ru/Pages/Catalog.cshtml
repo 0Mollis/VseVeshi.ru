@@ -42,7 +42,7 @@
             {
                 if (card.catalogs == Model.SelectedCategory)
                 {
-                    <div class="col card forCard">
+                    <a asp-area="" asp-page="item" asp-route-Id="@card.Id" class="col card forCard">
                         <img src="@card.img" class="card-img-top imgForCard">
                         <div class="card-body">
                             <div class="card-title">
@@ -52,10 +52,10 @@
                                 </span>
                             </div>
                             <div class="card-text">
-                                <span>@card.Description</span>
+                                <span>@card.Name</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 }
             }
             

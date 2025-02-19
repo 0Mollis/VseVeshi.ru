@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VseVeshi.ru.Data;
 
@@ -11,9 +12,11 @@ using VseVeshi.ru.Data;
 namespace VseVeshi.ru.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250219175451_0.2.7")]
+    partial class _027
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,21 +271,18 @@ namespace VseVeshi.ru.Data.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<string>("brand")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("brand")
+                        .HasColumnType("int");
 
                     b.Property<string>("catalogs")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("color")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("color")
+                        .HasColumnType("int");
 
-                    b.Property<string>("gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("img")
                         .IsRequired()
@@ -291,11 +291,7 @@ namespace VseVeshi.ru.Data.Migrations
                     b.Property<int>("quantity")
                         .HasColumnType("int");
 
-                    b.Property<string>("type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("userGiveId")
+                    b.Property<int>("type")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

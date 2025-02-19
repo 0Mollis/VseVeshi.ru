@@ -3,31 +3,34 @@
 @{
     ViewData["Title"] = "Вещь";
 }
+
+@foreach(var item in Model.rentItems.Where(x => x.Id.ToString() == Model.SelectedItem))
+{  
 <div class="d-flex container justify-content-center margin-foter">
     <div class="mt-5 me-5">
-        <div class="item-img mb-5">
-            <img src="Images/palatka.png">
+            <div class="item-img mb-5" style="background-image:url(@item.img) ">
+            @* <img class="item-img-src" src="@item.img"> *@
         </div>
         <div class="description mt-5 p-2">
             <div class="d-flex flex-column">
                 <span class="item-info">Информация о вещи</span>
-                <span class="item-description">Легкая компактная палатка купольного типа для «легкоходов» и рыбаков. Палатка проста в установке, дуги продеваются в рукава на внешнем тенте, что позволяет устанавливать палатку и в дождь.</span>
+                <span class="item-description">@item.Description</span>
             </div>
             <div class="pt-2 px-2">
                 <div class="item-data">
-                    <span class="font-transp">ID</span><span>10</span>
+                    <span class="font-transp">ID</span><span>@item.Id</span>
                 </div>
                 <div class="item-data">
-                    <span class="font-transp">Тип</span><span>Палатка</span>
+                    <span class="font-transp">Тип</span><span>@item.type</span>
                 </div>
                 <div class="item-data">
-                    <span class="font-transp">Бренд</span><span>High Peak</span>
+                    <span class="font-transp">Бренд</span><span>@item.brand</span>
                 </div>
                 <div class="item-data">
-                    <span class="font-transp">Цвет</span><span>Синий</span>
+                    <span class="font-transp">Цвет</span><span>@item.color</span>
                 </div>
                 <div class="item-data">
-                    <span class="font-transp">Пол</span><span>Унисекс</span>
+                    <span class="font-transp">Пол</span><span>@item.gender</span>
                 </div>
 
             </div>
@@ -35,38 +38,43 @@
     </div>
 
     <div class="mt-5">
-        <div class="zakaz mb-5 p-2">
-            <span class="zakaz-name">
-                Туристическая палатка High Peak Monodome XL
-            </span>
-            <div class="mt-2">
-                <span class="Chost">
-                    1 250 руб.
-                </span>
-                <span class="how-day"> 
-                    /3дня
-                </span>
-            </div>
-            <div class="mt-4">
-                <span class="quan">Количество</span>
-            </div>
-            <div class="d-flex align-items-center justify-content-between mt-2">
-                <div>
-                    <div class="d-flex flex-row">
-                        <button class="quantity-plus d-flex align-items-center mbutton-quantity" onclick="quantity_minus();"><img src="Images/minus.svg"></button>
-                        <span class="mx-2 quantity-col">1</span>
-                        <button class="quantity-plus d-flex align-items-center button-quantity" onclick="quantity_plus();"><img src="Images/plus.svg"></button>
+        <div class="zakaz mb-5 p-2 d-flex flex-column justify-content-between">
+            <div>
+                    <span class="zakaz-name">
+                        @item.Name
+                    </span>
+                    <div class="mt-5">
+                        <span class="Chost">
+                            @item.Price руб.
+                        </span>
+                        <span class="how-day">
+                            /@item.Days дня
+                        </span>
                     </div>
-                </div>
-                <div>
-                    <span class="how-have">Доступно</span><span class="maxquantity how-have mx-1">10</span>
-                </div>
             </div>
-            <div class="mt-5">
-                <span class="days">
+            <div>
+                    <div class="">
+                        <span class="quan">Количество</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-2">
+                        <div>
+                            <div class="d-flex flex-row">
+                                <button class="quantity-plus d-flex align-items-center mbutton-quantity" onclick="quantity_minus();"><img src="Images/minus.svg"></button>
+                                <span class="mx-2 quantity-col">1</span>
+                                <button class="quantity-plus d-flex align-items-center button-quantity" onclick="quantity_plus();"><img src="Images/plus.svg"></button>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="how-have">Доступно</span><span class="maxquantity how-have mx-1">@item.quantity</span>
+                        </div>
+                    </div>
+            </div>
+            
+            <div class="">
+@*                 <span class="days">
                     Срок аренды
                 </span>
-@*                 <div class="mt-2">
+                <div class="mt-2">
                     <select class="form-select select-date select-all mb-3 w-100" aria-label="Default select example">
                         <option selected>Выберите даты и время</option>
                         <option value="1">One</option>
@@ -79,34 +87,41 @@
                 </button>
             </div>
         </div>
-        <div class="info-arend mb-5 p-2">
-            <span class="arend-zag mx-2">Арендодатель</span>
-            <div>
-                <img class="info-img-size" src="Images/avatar.png">
-                <span class="arend-name">Димон</span>
-            </div>
-            <div>
-                <div class="item-data mt-2">
-                    <span class="font-transp">На сайте</span>
-                    <span>с 18.10.2024</span>
-                </div>
-                <div class="item-data mt-2">
-                    <span class="font-transp">Сдает в аренду</span>
-                    <span>20 вещей</span>
-                </div>
-            </div>
-            <div class="d-flex mt-4">
+            @foreach (var user in Model.usersDB.Where(x => item.userGiveId == x.Id))
+            {
+                <div class="info-arend mb-5 p-2">
+                <span class="arend-zag mx-2">Арендодатель</span>
                 <div>
-                    <button class="btn-color btn-messag-size me-2">
-                        Сообщение
-                    </button>
+                    <img class="info-img-size" src="Images/avatar.png">
+                    <span class="arend-name">@user.FirstName @user.LastName</span>
                 </div>
                 <div>
-                    <button class="btn-color btn-call">
-                        <img src="Images/phone.svg">
-                    </button>
+                    <div class="item-data mt-2">
+                        <span class="font-transp">На сайте</span>
+                        <span>с 18.10.2024</span>
+                    </div>
+                    <div class="item-data mt-2">
+                        <span class="font-transp">Сдает в аренду</span>
+                        <span>20 вещей</span>
+                    </div>
+                </div>
+                <div class="d-flex mt-4">
+                    <div>
+                        <button class="btn-color btn-messag-size me-2">
+                            Сообщение
+                        </button>
+                    </div>
+                    <div>
+                        <button class="btn-color btn-call">
+                            <img src="Images/phone.svg">
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+            }
+            
     </div>
 </div>
+}
+
+

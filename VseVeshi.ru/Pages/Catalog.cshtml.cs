@@ -10,6 +10,7 @@ namespace VseVeshi.ru.Pages
         public string SelectedCategory { get; set; }
 
         private ApplicationDbContext _context;
+
         public CatalogModel(ApplicationDbContext context)
         {
             _context = context;
