@@ -1,6 +1,8 @@
 ﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
+
+
 // Write your JavaScript code.
 
 
@@ -64,16 +66,33 @@ function quantity_minus() {
     check_quantity();
 }
 
-$.ajax({
-    url: 'api/catalog',
-    method: 'GET'
-}).done(function (data) {
-    for(cat of data)
-    {
-        if (cat.catalogs == 'Для отдыха') {
-            console.log(cat);
-        }
-    }
-    
 
+
+
+function getQuery(url) {
+    var query = window.location.search.substring(1);
+    var pair = query.split("=");
+    if (pair[0] == url) { return pair[1]; }
+}
+
+const SearchCatalog = (query,selectedCategory) => {
+        $.ajax({
+        url: 'api/catalog',
+        method: 'GET',
+            data: {query : query, category : selectedCategory}    
+    }).done(function (data) {
+        for(cat of data)
+        {
+            alert(cat);
+                console.log(cat);
+        }
+    })
+}
+
+var selectedCategory = getQuery('category'); //Функция для извлечения значения
+$(document).on('click', 'button[data-id="search_catalog-btn"]', function (e) {
+    e.preventDefault();
+    var query = $('input[data-id="search_catalog-input"]').val();
+    $('input[data-id="search_catalog-input"]').val('');
+    SearchCatalog(query, selectedCategory);
 })

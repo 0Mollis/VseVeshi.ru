@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using VseVeshi.ru.Data;
 using VseVeshi.ru.Models;
+using VseVeshi.ru.Pages;
 
 namespace VseVeshi.ru.Controller
 {
@@ -18,9 +20,10 @@ namespace VseVeshi.ru.Controller
 
         [HttpGet]
 
-        public List<RentItems> Get()
+        public List<RentItems> Get(string category, string query = "")
         {
-            return _context.RentItems.ToList();
+            return _context.RentItems.Where(x => x.Name.Contains(query)).ToList();
         }
+        
     }
 }
