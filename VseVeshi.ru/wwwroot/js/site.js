@@ -83,8 +83,7 @@ const SearchCatalog = (query,selectedCategory) => {
     }).done(function (data) {
         for(cat of data)
         {
-            alert(cat);
-                console.log(cat);
+            console.log(cat);
         }
     })
 }

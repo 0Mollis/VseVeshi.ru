@@ -22,7 +22,9 @@ namespace VseVeshi.ru.Controller
 
         public List<RentItems> Get(string category, string query = "")
         {
-            return _context.RentItems.Where(x => x.Name.Contains(query)).ToList();
+            var q = _context.RentItems.Where(x => x.Name.Contains(query)).ToList();
+            category = System.Uri.UnescapeDataString(category);
+            return q.Where(x => x.catalogs.Contains(category)).ToList();
         }
         
     }
