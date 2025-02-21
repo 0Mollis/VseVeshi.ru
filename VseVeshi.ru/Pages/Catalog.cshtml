@@ -40,8 +40,8 @@
         <div class="f-row row row-cols-3 row-cols-md-3 gap-4 h-100 justify-content-center">
             @foreach(var card in Model.rentItems)
             {
-                if (card.catalogs == Model.SelectedCategory)
-                {
+                @* if (card.catalogs == Model.SelectCategory)
+                { *@
                     <a asp-area="" asp-page="item" asp-route-Id="@card.Id" class="col card forCard">
                         <img src="@card.img" class="card-img-top imgForCard">
                         <div class="card-body">
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </a>
-                }
+                @* } *@
             }
             
             

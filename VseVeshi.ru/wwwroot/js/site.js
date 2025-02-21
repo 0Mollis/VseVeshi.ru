@@ -69,29 +69,53 @@ function quantity_minus() {
 
 
 
-function getQuery(url) {
-    var query = window.location.search.substring(1);
-    var pair = query.split("=");
-    if (pair[0] == url) { return pair[1]; }
+function getQuery(name) {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
 }
 
-const SearchCatalog = (query,selectedCategory) => {
-        $.ajax({
-        url: 'api/catalog',
-        method: 'GET',
-            data: {query : query, category : selectedCategory}    
-    }).done(function (data) {
-        for(cat of data)
-        {
-            console.log(cat);
-        }
-    })
+//const SearchCatalog = (query,selectedCategory) => {
+//        $.ajax({
+//        url: 'api/catalog',
+//        method: 'GET',
+//            data: {query : query, category : selectedCategory}
+//    }).done(function (data) {
+//        for(cat of data)
+//        {
+//            console.log(cat);
+//        }
+//    })
+//}
+
+function haveCategory() {
+    var query = window.location.search.substring(1);
+    var pair = query.split("=");
+    if (pair[0] == "category") { return 1; }
+    else { return 0; }
 }
 
 var selectedCategory = getQuery('category'); //Функция для извлечения значения
 $(document).on('click', 'button[data-id="search_catalog-btn"]', function (e) {
     e.preventDefault();
     var query = $('input[data-id="search_catalog-input"]').val();
-    $('input[data-id="search_catalog-input"]').val('');
-    SearchCatalog(query, selectedCategory);
+    if (haveCategory()) {
+        window.location.href = `/Catalog?category=${getQuery('category')}&search=${query}`;
+    }
+    else {
+        window.location.href = `/Catalog?search=${query}`;
+    }
+
 })
+
+//var selectedCategory = getQuery('category'); //Функция для извлечения значения
+//$(document).on('click', 'button[data-id="search_catalog-btn"]', function (e) {
+//    e.preventDefault();
+//    var query = $('input[data-id="search_catalog-input"]').val();
+//    $('input[data-id="search_catalog-input"]').val('');
+//    SearchCatalog(query, selectedCategory);
+//})
+
+//$(document).on('click', 'button[data-id="search_index-btn"]', function () {
+//    var query = $('input[data-id="search_index-input"]').val();
+//    window.location.href = '/Catalog?Search=' + query;
+//})
