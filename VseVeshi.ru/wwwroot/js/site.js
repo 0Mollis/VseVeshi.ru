@@ -115,7 +115,7 @@ $(document).on('click', 'button[data-id="search_catalog-btn"]', function (e) {
 //    SearchCatalog(query, selectedCategory);
 //})
 
-//$(document).on('click', 'button[data-id="search_index-btn"]', function () {
-//    var query = $('input[data-id="search_index-input"]').val();
-//    window.location.href = '/Catalog?Search=' + query;
-//})
+$(document).on('click', 'button[data-id="search_index-btn"]', function (e) {
+    var query = $('input[data-id="search_index-input"]').val();
+    window.location.href = `Catalog?Search=${query}`;
+})
