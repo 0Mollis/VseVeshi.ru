@@ -3,6 +3,7 @@
 
 
 
+
 // Write your JavaScript code.
 
 
@@ -87,10 +88,10 @@ function getQuery(name) {
 //    })
 //}
 
-function haveCategory() {
-    var query = window.location.search.substring(1);
-    var pair = query.split("=");
-    if (pair[0] == "category") { return 1; }
+function haveCategory(query) {
+    var url = window.location.search.substring(1);
+    var pair = url.split("=");
+    if (pair[0] == query) { return 1; }
     else { return 0; }
 }
 
@@ -98,11 +99,11 @@ var selectedCategory = getQuery('category'); //Функция для извле�
 $(document).on('click', 'button[data-id="search_catalog-btn"]', function (e) {
     e.preventDefault();
     var query = $('input[data-id="search_catalog-input"]').val();
-    if (haveCategory()) {
-        window.location.href = `/Catalog?category=${getQuery('category')}&search=${query}`;
+    if (haveCategory("category")) {
+        window.location.href = `/Catalog?category=${getQuery('category')}&search=${query}&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0`;
     }
     else {
-        window.location.href = `/Catalog?search=${query}`;
+        window.location.href = `/Catalog?search=${query}&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0`;
     }
 
 })
@@ -117,5 +118,66 @@ $(document).on('click', 'button[data-id="search_catalog-btn"]', function (e) {
 
 $(document).on('click', 'button[data-id="search_index-btn"]', function (e) {
     var query = $('input[data-id="search_index-input"]').val();
-    window.location.href = `Catalog?Search=${query}`;
+    window.location.href = `Catalog?Search=${query}&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0`;
+})
+
+$(document).on('click', 'a[class="ahref"]', function (e) {
+    e.preventDefault();
+    var cat = e.currentTarget.id;
+    window.location.href = `/Catalog?category=${cat}&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0`;
+})
+
+function itsCatalog() {
+    if (window.location.pathname == "/Catalog") {
+        var url = window.location.search;
+        url = url.split("&");
+        if (haveCategory("category") && getQuery("search")=="") {
+            url = url.slice(2).join("=");
+            url = url.split("=");
+            url = url.filter((element, index) => index % 2 != 0);
+            filtr(url);
+        }
+        else if (haveCategory("category") && getQuery("search") != "") {
+            url = url.slice(2).join("=");
+            url = url.split("=");
+            url = url.filter((element, index) => index % 2 != 0);
+            filtr(url);
+        } 
+        else {
+            url = url.slice(1).join("=");
+            url = url.split("=");
+            url = url.filter((element, index) => index % 2 != 0);
+            filtr(url);
+        } 
+
+
+
+        console.log(url);
+
+    }
+}
+itsCatalog();
+
+function filtr(url) {
+    $('.select-date').val(url[0]);
+    $('.select-cost').val(url[1]);
+    $('.select-brand').val(url[2]);
+    $('.select-color').val(url[3]);
+    $('.select-pol').val(url[4]);
+}
+
+$(document).on('click', 'button[id="filtr"]', function () {
+    var selectDate = $('.select-date').val();
+    var selectPrice = $('.select-cost').val();
+    var selectBrand = $('.select-brand').val();
+    var selectColor = $('.select-color').val();
+    var selectGender = $('.select-pol').val();
+    var query = "";
+
+    if (haveCategory("category")) {
+        window.location.href = `/Catalog?category=` + getQuery("category") + `&search=${query}&SelectDate=${selectDate}&SelectPrice=${selectPrice}&SelectBrand=${selectBrand}&SelectColor=${selectColor}&SelectGender=${selectGender}`;
+    }   
+    else {
+        window.location.href = `/Catalog?search=${query}&SelectDate=${selectDate}&SelectPrice=${selectPrice}&SelectBrand=${selectBrand}&SelectColor=${selectColor}&SelectGender=${selectGender}`;
+    } 
 })

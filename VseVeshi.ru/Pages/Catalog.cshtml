@@ -5,43 +5,45 @@
 }
 <div class="container mt-5 d-flex margin-foter">
     <div class="d-flex flex-column align-items-end w-25">
-        <select class="form-select select-date select-all mb-3" aria-label="Default select example">
-            <option selected>Дата аренды</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <select class="form-select select-cost select-all mb-3" aria-label="Default select example">
-            <option selected>Цена</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <select class="form-select select-brand select-all mb-3" aria-label="Default select example">
-            <option selected>Бренд</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <select class="form-select select-color select-all mb-3" aria-label="Default select example">
-            <option selected>Цвет</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <select class="form-select select-pol select-all mb-3" aria-label="Default select example">
-            <option selected>Пол</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
+            <select class="form-select select-date select-all mb-3" aria-label="Default select example">
+                <option selected value="0">Дата аренды</option>
+                <option value="1">3 дня</option>
+                <option value="2">7 дней</option>
+                <option value="3">14 дней</option>
+            </select>
+            <select class="form-select select-cost select-all mb-3" aria-label="Default select example">
+            <option selected value="0">Цена</option>
+                <option value="1">Дешевле</option>
+                <option value="2">Дороже</option>
+            </select>
+            <select class="form-select select-brand select-all mb-3" aria-label="Default select example">
+            <option selected value="0">Бренд</option>
+                <option value="1">High Peak</option>
+                <option value="2">Русь</option>
+                <option value="3">Другое</option>
+            </select>
+            <select class="form-select select-color select-all mb-3" aria-label="Default select example">
+            <option selected value="0">Цвет</option>
+                <option value="1">Красний</option>
+                <option value="2">Оранжевый</option>
+                <option value="3">Жёлтый</option>
+                <option value="4">Зелёный</option>
+                <option value="5">Голубой</option>
+                <option value="6">Синий</option>
+                <option value="7">Фиолетовый</option>
+            </select>
+            <select class="form-select select-pol select-all mb-3" aria-label="Default select example">
+            <option selected value="0">Пол</option>
+                <option value="1">Мужской</option>
+                <option value="2">Женский</option>
+                <option value="3">Унисекс</option>
+            </select>
+            <button id="filtr" class="btn btn-color w-50">Применить</button>
     </div>
     <div class="ms-4">
         <div class="f-row row row-cols-3 row-cols-md-3 gap-4 h-100 justify-content-center">
             @foreach(var card in Model.rentItems)
             {
-                @* if (card.catalogs == Model.SelectCategory)
-                { *@
                     <a asp-area="" asp-page="item" asp-route-Id="@card.Id" class="col card forCard">
                         <img src="@card.img" class="card-img-top imgForCard">
                         <div class="card-body">
@@ -56,7 +58,6 @@
                             </div>
                         </div>
                     </a>
-                @* } *@
             }
             
             

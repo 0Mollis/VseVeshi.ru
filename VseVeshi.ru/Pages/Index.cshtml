@@ -113,7 +113,7 @@
                 @{
                     foreach(var catalog in Model.catalog)
                     {
-                        <a asp-area="" asp-page="Catalog" asp-route-category="@catalog.Name" class="ahref">
+                        <a id="@catalog.Name" class="ahref">
                             <div class="catalog-item d-flex flex-column">
                                 <div class="catalog-circus d-flex justify-content-center align-items-center">
                                     <img class="katalogImgSize" src="@catalog.Image">
