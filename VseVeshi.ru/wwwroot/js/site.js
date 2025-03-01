@@ -129,42 +129,44 @@ $(document).on('click', 'a[class="ahref"]', function (e) {
 
 function itsCatalog() {
     if (window.location.pathname == "/Catalog") {
-        var url = window.location.search;
-        url = url.split("&");
-        if (haveCategory("category") && getQuery("search")=="") {
-            url = url.slice(2).join("=");
-            url = url.split("=");
-            url = url.filter((element, index) => index % 2 != 0);
-            filtr(url);
-        }
-        else if (haveCategory("category") && getQuery("search") != "") {
-            url = url.slice(2).join("=");
-            url = url.split("=");
-            url = url.filter((element, index) => index % 2 != 0);
-            filtr(url);
-        } 
-        else {
-            url = url.slice(1).join("=");
-            url = url.split("=");
-            url = url.filter((element, index) => index % 2 != 0);
-            filtr(url);
-        } 
+        $('.select-date').val(getQuery("SelectDate"));
+        $('.select-cost').val(getQuery("SelectPrice"));
+        $('.select-brand').val(getQuery("SelectBrand"));
+        $('.select-color').val(getQuery("SelectColor"));
+        $('.select-pol').val(getQuery("SelectGender"));
 
-
-
-        console.log(url);
-
+        //var url = window.location.search;
+        //url = url.split("&");
+        //if (!haveCategory("search")) {
+        //    url = url.slice(1).join("=");
+        //    url = url.split("=");
+        //    url = url.filter((element, index) => index % 2 != 0);
+        //    filtr(url);
+        //} 
+        //else if (haveCategory("category") && getQuery("search") == "") {
+        //    url = url.slice(2).join("=");
+        //    url = url.split("=");
+        //    url = url.filter((element, index) => index % 2 != 0);
+        //    filtr(url);
+        //}
+        //else if (haveCategory("category") && getQuery("search") != "") {
+        //    url = url.slice(2).join("=");
+        //    url = url.split("=");
+        //    url = url.filter((element, index) => index % 2 != 0);
+        //    filtr(url);
+        //} 
+        //console.log(url);
     }
 }
 itsCatalog();
 
-function filtr(url) {
-    $('.select-date').val(url[0]);
-    $('.select-cost').val(url[1]);
-    $('.select-brand').val(url[2]);
-    $('.select-color').val(url[3]);
-    $('.select-pol').val(url[4]);
-}
+//function filtr(url) {
+//    $('.select-date').val(url[0]);
+//    $('.select-cost').val(url[1]);
+//    $('.select-brand').val(url[2]);
+//    $('.select-color').val(url[3]);
+//    $('.select-pol').val(url[4]);
+//}
 
 $(document).on('click', 'button[id="filtr"]', function () {
     var selectDate = $('.select-date').val();
