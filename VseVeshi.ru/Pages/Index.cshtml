@@ -14,7 +14,9 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <button type="button" class="btn btn-light px-3 btnEnter">Войти</button>
+                    <a asp-area="Identity" asp-page="/Account/Login">
+                        <button type="button" class="btn btn-light px-3 btnEnter">Войти</button>
+                    </a>
                 </div>
             </nav>
             <div class="d-flex justify-content-between mt-5">

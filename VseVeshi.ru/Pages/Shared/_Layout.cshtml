@@ -16,27 +16,29 @@
                 <nav class="navbar navbar-expand-sm navbar-light mb-3">
                     <div class="container">
                         <a class="navbar-brand catalog-brand-size" asp-area="" asp-page="/Index">
-                            <img src="Images/brandBlack.svg">
+                            <img src="~/Images/brandBlack.svg">
                         </a>
                         <div class="d-sm-inline-flex justify-content-between">
                             <form class="d-flex searchShadow" role="search">
                                 <input class="form-control catalog-search-left py-2" data-id="search_catalog-input" type="search" placeholder="Хочу арендовать" aria-label="Search">
-                                <button class="p-1 bg-white catalog-search-right" data-id="search_catalog-btn" type="submit"><img class="catalogFind" src="Images/catalogFind.svg"></button>
+                                <button class="p-1 bg-white catalog-search-right" data-id="search_catalog-btn" type="submit"><img class="catalogFind" src="~/Images/catalogFind.svg"></button>
                             </form>
                         </div>
                         <div>
                             <a class="normal-link" asp-area="" asp-page="/Cart">
-                                <img src="Images/cart.svg">
+                                <img src="~/Images/cart.svg">
                                 <span>
                                     Корзина
                                 </span>
                             </a>
                         </div>
-                        <button class="enter-btn-container d-flex justify-content-center align-items-center border-0">
-                            <span class="enter-btn">
-                                Войти
-                            </span>
-                        </button>
+                        <a asp-area="Identity" asp-page="/Account/Login">
+                            <button class="enter-btn-container d-flex justify-content-center align-items-center border-0">
+                                <span class="enter-btn">
+                                    Войти
+                                </span>
+                            </button>
+                        </a>
                     </div>
                 </nav>
                 <div class="container d-flex justify-content-evenly background-catalog">
