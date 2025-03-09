@@ -33,6 +33,7 @@ body {
     white-space: nowrap;
     background: #26af34;
     height: 323px;
+    z-index:10;
 }
 
 .innerFooter {
@@ -214,7 +215,6 @@ body {
     height: 100px;
     border: 0px;
     cursor: pointer;
-    z-index: 1;
 }
 
     .scroll-button:hover {
@@ -658,6 +658,131 @@ body {
     background-color: rgba(20, 121, 30, 1);
     border-color: rgba(20, 121, 30, 1);
 }
+
+.menu-btn:focus {
+    box-shadow: none;
+}
+
+.menu-btn {
+    width: 50px;
+    height: 50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+    cursor: pointer;
+    padding:5px;
+}
+
+.inmenu-btn {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    right:-285px;
+    top:10px;
+    cursor: pointer;
+}
+.inmenu-btn span {
+    width: 25px;
+    height: 2px;
+    position: absolute;
+    background-color: black;
+    transition: all 0.5s;
+}
+.inmenu-btn.active span:nth-of-type(2) {
+    display: none;
+}
+
+.inmenu-btn.active span:nth-of-type(1) {
+    top: 50%;
+    transform: translate(0%) rotate(45deg);
+}
+
+.inmenu-btn.active span:nth-of-type(3) {
+    top: 50%;
+    transform: translate(0%) rotate(-45deg);
+}
+
+.menu{
+    position:fixed;
+    top:0;
+    right:0;
+    z-index:2;
+    height: 100%;
+    background-color: white;
+    transform: translateX(100%);
+    transition:all 0.5s;
+}
+
+.menu-btn span {
+    width: 25px;
+    height: 2px;
+    position: absolute;
+    background-color: black;
+    transition:all 0.5s;
+}
+
+.menu-btn span:nth-of-type(1){
+    top: calc(50% - 7px)
+}
+
+.menu-btn span:nth-of-type(2) {
+    top: calc(50%);
+}
+
+.menu-btn span:nth-of-type(3) {
+    top: calc(50% + 7px);
+}
+
+.menu-btn.active span:nth-of-type(2) {
+    display: none;
+}
+
+.menu-btn.active span:nth-of-type(1) {
+    top: 50%;
+    transform: translate(0%) rotate(45deg);
+}
+
+.menu-btn.active span:nth-of-type(3) {
+    top: 50%;
+    transform: translate(0%) rotate(-45deg);
+}
+
+.menu li{
+    list-style-type:none;
+}
+
+.menu.active{
+    transform: translateX(0%);
+    transition:all 0.5s;
+}
+
+
+/*.offcanvas-litle{
+    width:100px;
+    display:flex;
+}
+
+@media (min-width: 576px) {
+    .navbar-expand-sm .navbar-toggler {
+        display: flex;
+    }
+}
+
+@media (min-width: 576px) {
+    .navbar-expand-sm .offcanvas {
+        position: inherit;
+        bottom: 0;
+        z-index: 1000;
+        flex-grow: 1;
+        visibility: visible !important;
+        background-color: transparent;
+        border-right: 0;
+        border-left: 0;
+        transition: none;
+        transform: none;
+    }
+}*/
 
 /*.footerContainer{
     max-width: 211px;

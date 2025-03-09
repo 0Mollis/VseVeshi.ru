@@ -183,3 +183,15 @@ $(document).on('click', 'button[id="filtr"]', function () {
         window.location.href = `/Catalog?search=${query}&SelectDate=${selectDate}&SelectPrice=${selectPrice}&SelectBrand=${selectBrand}&SelectColor=${selectColor}&SelectGender=${selectGender}`;
     } 
 })
+
+$(document).on('click', '.menu-btn', function () {
+    this.classList.toggle('active');
+    var menu = document.querySelector(".menu");
+    menu.classList.toggle('active');
+})
+$(document).on('click', '.inmenu-btn', function () {
+    var menu = document.querySelector(".menu");
+    var menuBtn = document.querySelector(".menu-btn");
+    menu.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+})

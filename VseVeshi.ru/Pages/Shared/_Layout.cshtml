@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -32,13 +36,59 @@
                                 </span>
                             </a>
                         </div>
-                        <a asp-area="Identity" asp-page="/Account/Login">
-                            <button class="enter-btn-container d-flex justify-content-center align-items-center border-0">
-                                <span class="enter-btn">
-                                    Войти
-                                </span>
-                            </button>
-                        </a>
+                        <div>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div class="menu-btn">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="menu">
+                                    <div class="inmenu-btn active">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <ul>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Ссылка</a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Выпадающий список для админа
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Добавить</a></li>
+                                                <li><a class="dropdown-item" href="#">Редактировать</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Что - нибудь ещё</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                                                <button type="submit" class="nav-link btn btn-link text-dark">Выход</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                <a asp-area="Identity" asp-page="/Account/Login">
+                                    <button class="enter-btn-container d-flex justify-content-center align-items-center border-0">
+                                        <span class="enter-btn">
+                                            Войти
+                                        </span>
+                                    </button>
+                                </a>
+                            }
+                        </div>
                     </div>
                 </nav>
                 <div class="container d-flex justify-content-evenly background-catalog">
