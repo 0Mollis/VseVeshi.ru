@@ -50,29 +50,38 @@
                                         <span></span>
                                         <span></span>
                                     </div>
+                                    <h3 class="mx-5 mt-2 mb-3">Меню</h3>
                                     <ul>
                                         <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                                            <a class="nav-link active text-green" aria-current="page" href="#">Главная</a>
+                                        </li>
+                                        <li class="nav-item text-green">
+                                            <a class="nav-link text-green" href="#">Каталог</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Ссылка</a>
+                                            <a class="nav-link text-green" href="#">О сервисе</a>
                                         </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Выпадающий список для админа
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Добавить</a></li>
-                                                <li><a class="dropdown-item" href="#">Редактировать</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Что - нибудь ещё</a></li>
-                                            </ul>
-                                        </li>
+                                        @{
+                                            var user = await UserManager.GetUserAsync(User);
+                                        }
+                                        @if (user != null && await UserManager.IsInRoleAsync(user, "admin"))
+                                        {
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle text-green" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Выпадающий список для админа
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item text-green" href="./Edit">Редактировать</a></li>
+                                                    <li>
+                                                        <hr class="dropdown-divider">
+                                                    </li>
+                                                    <li><a class="dropdown-item text-green" href="#">Что - нибудь ещё</a></li>
+                                                </ul>
+                                            </li>
+                                        }
                                         <li class="nav-item">
                                             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
-                                                <button type="submit" class="nav-link btn btn-link text-dark">Выход</button>
+                                                <button type="submit" class="btn normal-btn btn-link text-red">Выход</button>
                                             </form>
                                         </li>
                                     </ul>

@@ -1,0 +1,111 @@
+﻿@page
+@model VseVeshi.ru.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container margin-foter mt-2">
+    <h1>Редактирование</h1>
+    <div class="mt-4">
+        <h4>Выбор предмета из списка</h4>
+        <select class="select-id">
+            <option value="0" selected>Выбор предмета</option>
+            @foreach (var item in Model.rentItems)
+            {
+                <option value="@item.Id">id: @item.Id, Название: @item.Name</option> 
+            }
+        </select>
+        <h4 class="mt-2">Выберите предмет по id</h4>
+        <input type="text" placeholder="id" data-id="input-id">
+        <br />        
+        <button class="search-id-btn mt-2 btn btn-primary">Подтвердить</button>
+        <span class="error">Выбрано два id</span>
+    </div>
+    <hr />
+    <div class="row editMenu">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="RentItems.Id" />
+                <div class="form-group">
+                    <label asp-for="RentItems.Price" class="control-label">Цена</label>
+                    <input asp-for="RentItems.Price" class="form-control" />
+                    <span asp-validation-for="RentItems.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.Days" class="control-label">Дни</label>
+                    <select asp-for="RentItems.Days" class="form-control">
+                        <option selected></option>
+                        <option value="3">3 дня</option>
+                        <option value="7">7 дней</option>
+                        <option value="14">14 дней</option>
+                    </select>
+                    <span asp-validation-for="RentItems.Days" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.Name" class="control-label">Название</label>
+                    <input asp-for="RentItems.Name" class="form-control" />
+                    <span asp-validation-for="RentItems.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.Description" class="control-label">Описание</label>
+                    <input asp-for="RentItems.Description" class="form-control" />
+                    <span asp-validation-for="RentItems.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.quantity" class="control-label">Количество</label>
+                    <input asp-for="RentItems.quantity" class="form-control" />
+                    <span asp-validation-for="RentItems.quantity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.catalogs" class="control-label">Каталог</label>
+                    <input asp-for="RentItems.catalogs" class="form-control" />
+                    <span asp-validation-for="RentItems.catalogs" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.img" class="control-label">Изображение</label>
+                    <input asp-for="RentItems.img" class="form-control" />
+                    <span asp-validation-for="RentItems.img" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.type" class="control-label">Тип</label>
+                    <input asp-for="RentItems.type" class="form-control" />
+                    <span asp-validation-for="RentItems.type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.brand" class="control-label">Цвет</label>
+                    <input asp-for="RentItems.brand" class="form-control" />
+                    <span asp-validation-for="RentItems.brand" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.color" class="control-label"></label>
+                    <input asp-for="RentItems.color" class="form-control" />
+                    <span asp-validation-for="RentItems.color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.gender" class="control-label">Пол</label>
+                    <input asp-for="RentItems.gender" class="form-control" />
+                    <span asp-validation-for="RentItems.gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RentItems.userGiveId" class="control-label">id создавшего</label>
+                    <input asp-for="RentItems.userGiveId" class="form-control" />
+                    <span asp-validation-for="RentItems.userGiveId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary mt-3" />
+                </div>
+            </form>
+                   
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="./Index">На главную</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

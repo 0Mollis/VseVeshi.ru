@@ -195,3 +195,18 @@ $(document).on('click', '.inmenu-btn', function () {
     menu.classList.toggle('active');
     menuBtn.classList.toggle('active');
 })
+
+$(document).on('click', '.search-id-btn', function () {
+    var selected = $('.select-id').val();
+    var input = $('input[data-id="input-id"]').val();
+
+    if (selected != 0 && input != "") {
+        $('.error').addClass('visible');
+    }
+    else if (selected != 0) {
+        window.location.href = `/Edit?id=${selected}`;
+    }
+    else if (input != "") {
+        window.location.href = `/Edit?id=${input}`;
+    }
+})

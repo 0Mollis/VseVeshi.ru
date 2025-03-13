@@ -708,6 +708,7 @@ body {
     top:0;
     right:0;
     z-index:2;
+    width:325px;
     height: 100%;
     background-color: white;
     transform: translateX(100%);
@@ -752,11 +753,38 @@ body {
     list-style-type:none;
 }
 
-.menu.active{
+.menu.active {
     transform: translateX(0%);
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.3);
     transition:all 0.5s;
 }
 
+.text-green{
+    color:green !important;
+}
+
+    .text-green:hover {
+        color: #0ac60a !important;
+    }
+
+.text-red{
+    color:orangered;
+}
+    .text-red:hover {
+        color: #ff8457;
+    }
+
+.normal-btn:focus {
+    box-shadow: none;
+}
+
+.error{
+    display:none;
+}
+.visible{
+    display:block;
+    color:orangered;
+}
 
 /*.offcanvas-litle{
     width:100px;
