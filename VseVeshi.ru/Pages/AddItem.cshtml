@@ -1,0 +1,84 @@
+﻿@page
+@model VseVeshi.ru.Pages.AddItemModel
+@{
+    ViewData["Title"] = "Добавление вещи";
+}
+<div class="container margin-foter mt-4">
+    <h1 class="mb-3">Добавление вещи</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div class="text-danger"></div>
+                <input type="hidden" />
+                <div class="form-group">
+                    <label class="control-label">Цена</label>
+                    <input class="form-control" data-id="itemPrice"/>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Дни</label>
+                    <select class="form-control" data-id="itemDate">
+                        <option selected value="0">Выберите из списка</option>
+                        <option value="3">3 дня</option>
+                        <option value="7">7 дней</option>
+                        <option value="14">14 дней</option>
+                    </select>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Название</label>
+                    <input class="form-control" data-id="itemName" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Описание</label>
+                    <input class="form-control" data-id="itemDescription" />
+                    <span  class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Количество</label>
+                    <input class="form-control" data-id="itemQuantity" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Каталог</label>
+                    <input class="form-control" data-id="itemCatalog" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Изображение</label>
+                    <input class="form-control" data-id="itemImage" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Тип</label>
+                    <input class="form-control" data-id="itemType" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Бренд</label>
+                    <input class="form-control" data-id="itemBrand" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Цвет</label>
+                    <input class="form-control" data-id="itemColor" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Пол</label>
+                    <input class="form-control" data-id="itemGender" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" data-id="itemBtnPost" value="Save" class="btn btn-primary mt-3" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="./Index">На главную</a>
+    </div>
+</div>

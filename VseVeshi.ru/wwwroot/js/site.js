@@ -1,9 +1,6 @@
 ﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-
-
-
 // Write your JavaScript code.
 
 
@@ -208,5 +205,40 @@ $(document).on('click', '.search-id-btn', function () {
     }
     else if (input != "") {
         window.location.href = `/Edit?id=${input}`;
+    }
+})
+
+$(document).on('click', 'input[data-id="itemBtnPost"]', function () {
+    var itemPrice = $('input[data-id="itemPrice"]').val();
+    var itemDate = $('select[data-id="itemDate"]').val();
+    var itemName = $('input[data-id="itemName"]').val();
+    var itemDescription = $('input[data-id="itemDescription"]').val();
+    var itemQuantity = $('input[data-id="itemQuantity"]').val();
+    var itemCatalog = $('input[data-id="itemCatalog"]').val();
+    var itemImage = $('input[data-id="itemImage"]').val();
+    var itemType = $('input[data-id="itemType"]').val();
+    var itemBrand = $('input[data-id="itemBrand"]').val();
+    var itemColor = $('input[data-id="itemColor"]').val();
+    var itemGender = $('input[data-id="itemGender"]').val();
+
+    if (itemDate != 0) {
+        $.ajax({
+            method: 'POST',
+            url: 'api/addItem/addNewItem',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                Price: itemPrice,
+                Days: itemDate,
+                Description: itemDescription,
+                quantity: itemQuantity,
+                catalogs: itemCatalog,
+                img: itemImage,
+                Name: itemName,
+                brand: itemBrand,
+                color: itemColor,
+                gender: itemGender,
+                type: itemType
+            })
+        })
     }
 })
