@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VseVeshi.ru.Data;
 
@@ -11,9 +12,11 @@ using VseVeshi.ru.Data;
 namespace VseVeshi.ru.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250406113545_3.0")]
+    partial class _30
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,32 +227,6 @@ namespace VseVeshi.ru.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("VseVeshi.ru.Models.Cart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("RentItemsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RentItemsId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("carts");
-                });
-
             modelBuilder.Entity("VseVeshi.ru.Models.Catalog", b =>
                 {
                     b.Property<int>("Id")
@@ -402,23 +379,6 @@ namespace VseVeshi.ru.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("VseVeshi.ru.Models.Cart", b =>
-                {
-                    b.HasOne("VseVeshi.ru.Models.RentItems", "RentItems")
-                        .WithMany()
-                        .HasForeignKey("RentItemsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("RentItems");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

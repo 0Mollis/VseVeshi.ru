@@ -16,7 +16,7 @@
                 <span class="item-description">@item.Description</span>
             </div>
             <div class="pt-2 px-2">
-                <div class="item-data">
+                <div class="item-data" data-id="@item.Id">
                     <span class="font-transp">ID</span><span>@item.Id</span>
                 </div>
                 <div class="item-data">
@@ -59,7 +59,7 @@
                         <div>
                             <div class="d-flex flex-row">
                                 <button class="quantity-plus d-flex align-items-center mbutton-quantity" onclick="quantity_minus();"><img src="Images/minus.svg"></button>
-                                <span class="mx-2 quantity-col">1</span>
+                                <span class="mx-2 quantity-col" data-id="quantity">1</span>
                                 <button class="quantity-plus d-flex align-items-center button-quantity" onclick="quantity_plus();"><img src="Images/plus.svg"></button>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         <option value="3">Three</option>
                     </select>
                 </div> *@
-                <button class="btn-warning btn w-100 btn-size">
+                <button class="btn-warning btn w-100 btn-size" data-action="Item_to_cart">
                     Добавить в корзину
                 </button>
             </div>

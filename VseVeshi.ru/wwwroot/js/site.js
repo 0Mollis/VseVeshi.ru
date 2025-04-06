@@ -242,3 +242,21 @@ $(document).on('click', 'input[data-id="itemBtnPost"]', function () {
         })
     }
 })
+
+$(document).on('click', 'button[data-action="Item_to_cart"]', function () {
+    var itemsId = $('div[data-id]').attr('data-id');
+    var itemsQuantity = $('span[data-id="quantity"]').text();
+    itemsId = parseInt(itemsId, 10);
+    itemsQuantity = parseInt(itemsQuantity, 10);
+
+    $.ajax({
+        url: '/api/Cart',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            itemId: itemsId,
+            itemQuantity : itemsQuantity
+        }) 
+    })
+})
+

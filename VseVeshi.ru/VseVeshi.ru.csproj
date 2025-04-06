@@ -20,4 +20,8 @@
     <PackageReference Include="PiotrTrojan.AspNetCore.IdentityErrorLocalization.ru-RU" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploadImg\" />
+  </ItemGroup>
+
 </Project>
