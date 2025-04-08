@@ -7,36 +7,44 @@
     <span class="cart-zag">
         Корзина
     </span>
-    <div class="mt-2 d-flex flex-column">
-        <span class="arend-giver">Арендодатель:</span>
-        <span class="arend-giver-name">Димон</span>
-    </div>
-    <div class="mt-3">
-        <button class="btn-color btn p-2 chose-date">Выберите дату и время</button>
-    </div>
     <div class="mt-2">
-        <div class="d-flex justify-content-between flex-column w-75">
-            <div>
-                <img class="cart-img-size" src="Images/palatka.png">
-                <span class="item-card-name">Туристическая палатка High Peak Monodome XL</span>
-            </div>
-            <div class="d-flex flex-column align-items-end">
-                <button class="btn-delite mb-4"><img src="Images/close.svg"></button>
-                <div class="d-flex flex-row">
-                    <button class="quantity-plus d-flex align-items-center mbutton-quantity" onclick="quantity_minus();"><img src="Images/minus.svg"></button>
-                    <span class="mx-2 quantity-col">1</span>
-                    <button class="quantity-plus d-flex align-items-center button-quantity" onclick="quantity_plus();"><img src="Images/plus.svg"></button>
+        @foreach(var cart in Model.carts)
+        {
+            <div class="d-flex justify-content-between flex-column w-75">
+                <div>
+                    <img class="cart-img-size" src="Images/palatka.png">
+                    <span class="item-card-name">@cart.RentItems.Name</span>
                 </div>
-                <div class="d-flex">
-                    <span class="how-have cart-font-size">Доступно</span><span class="maxquantity how-have mx-1 cart-font-size"> 10</span>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-end">
+                        <div class="mt-2 d-flex flex-column">
+                            <span class="arend-giver">Арендодатель:</span>
+                            <span class="arend-giver-name">Димон</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-end">
+                        <button class="btn-delite mb-4"><img src="Images/close.svg"></button>
+                        <div class="d-flex flex-row">
+                            <button class="quantity-plus d-flex align-items-center mbutton-quantity" onclick="quantity_minus();"><img src="Images/minus.svg"></button>
+                            <span class="mx-2 quantity-col">@cart.quantity</span>
+                            <button class="quantity-plus d-flex align-items-center button-quantity" onclick="quantity_plus();"><img src="Images/plus.svg"></button>
+                        </div>
+                        <div class="d-flex">
+                            <span class="how-have cart-font-size">Доступно</span><span class="maxquantity how-have mx-1 cart-font-size"> @cart.RentItems.quantity</span>
+                        </div>
+                        <span class="mt-3 chost-font">Аренда</span>
+                        <span class="">
+                            @cart.RentItems.Price
+                        </span>
+                    </div>
                 </div>
-                <span class="mt-3 chost-font">Аренда</span>
-                <span class="">
-                    1250
-                </span>
+                <hr class="w-100 hr-color">
             </div>
-            <hr class="w-100 hr-color">
-        </div>
+        }
+        
+
+
+
         <div class="d-flex flex-column w-75">
             <div class="d-flex justify-content-between my-3 align-items-center">
                 <span>Расчётная стоимость</span>
@@ -66,6 +74,9 @@
             <label class="form-check-label" for="flexRadioDefault2">
                 Доставка по г. Пенза
             </label>
+        </div>
+        <div class="mt-3">
+            <button class="btn-color btn p-2 chose-date">Выберите дату и время</button>
         </div>
         <div class="mt-4">
             <button class="btn btn-warning btn-cart-text py-2">
