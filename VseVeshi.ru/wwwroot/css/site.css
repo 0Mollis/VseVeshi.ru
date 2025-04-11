@@ -1,4 +1,4 @@
-html {
+﻿html {
     font-size: 14px;
 }
 
@@ -784,6 +784,13 @@ body {
 .visible{
     display:block;
     color:orangered;
+}
+
+.clearCart{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: 350px;
 }
 
 /*.offcanvas-litle{

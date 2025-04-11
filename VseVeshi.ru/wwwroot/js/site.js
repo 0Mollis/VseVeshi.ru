@@ -255,8 +255,191 @@ $(document).on('click', 'button[data-action="Item_to_cart"]', function () {
         contentType: 'application/json',
         data: JSON.stringify({
             itemId: itemsId,
-            itemQuantity : itemsQuantity
-        }) 
+            itemQuantity: itemsQuantity
+        })
     })
 })
 
+function calcPrice() {
+    var allPricesArr = [];
+    var fullPrice = 0;
+
+    $('div[data-id="cards"]').each(function () {
+        var priceElement = $(this).find('.cartPrice');
+        var price = parseFloat(priceElement.text());
+        allPricesArr.push(price);
+    }) 
+
+    for (var p of allPricesArr) {
+        fullPrice += p;
+    }
+
+    $('span[data-id="priceAll"]').text(fullPrice);
+}
+
+function checkQuantity() {
+    $('div[data-id="cards"]').each(function () {
+        var itemQuantity = $(this).find('.quantity-col').text();
+        var itemMaxQuantity = $(this).find('.maxquantity').text();
+        console.log(itemQuantity + ' ' + itemMaxQuantity);
+        if (itemQuantity == itemMaxQuantity) {
+            $(this).find('button[data-id="quantity_plus"]').attr('disabled', 'disabled');
+            $(this).find('button[data-id="quantity_plus"]').addClass('quantity-min');
+        }
+        else {
+            $(this).find('button[data-id="quantity_plus"]').removeAttr('disabled');
+        }
+        if (itemQuantity == 1) {
+            $(this).find('button[data-id="quantity_minus"]').attr('disabled', 'disabled');
+            $(this).find('button[data-id="quantity_minus"]').addClass('quantity-min');
+        }
+        else {
+            $(this).find('button[data-id="quantity_minus"]').removeAttr('disabled');
+        }
+    })
+}
+
+if (window.location.pathname == '/Cart') {
+    showCart();
+}
+
+function showCart() {
+    $.ajax({
+        url: '/api/Cart',
+        method: 'GET',
+    }).done((data) => {
+        var list = '';
+
+        $.each(data, function () {
+            list += `
+            <div class="d-flex justify-content-between flex-column w-75" data-id="cards">
+                <div>
+                    <img class="cart-img-size" src="${this.rentItems.img}">
+                    <span class="item-card-name">${this.rentItems.name}</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-end">
+                        <div class="mt-2 d-flex flex-column">
+                            <span class="arend-giver">Арендодатель:</span>
+                            <span class="arend-giver-name">Димон</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-end">
+                        <button class="btn-delite mb-4" data-action="Remove"><img src="Images/close.svg"></button>
+                        <div class="d-flex flex-row">
+                            <button class="quantity-plus d-flex align-items-center mbutton-quantity" data-id="quantity_minus"><img src="Images/minus.svg"></button>
+                            <span class="mx-2 quantity-col" data-id="${this.rentItems.id}">${this.quantity}</span>
+                            <button class="quantity-plus d-flex align-items-center button-quantity" data-id="quantity_plus"><img src="Images/plus.svg"></button>
+                        </div>
+                        <div class="d-flex">
+                            <span class="how-have cart-font-size">Доступно</span><span class="maxquantity how-have mx-1 cart-font-size" data-id="${this.rentItems.quantity}">${this.rentItems.quantity}</span>
+                        </div>
+                        <span class="mt-3 chost-font">Аренда</span>
+                        <span class="cartPrice" data-id="${this.rentItems.price * this.quantity}">
+                            ${this.rentItems.price * this.quantity}
+                        </span>
+                    </div>
+                </div>
+                <hr class="w-100 hr-color">
+            </div>`;
+        })
+        if (list != "") {
+            list += `<div class="d-flex flex-column w-75">
+            <div class="d-flex justify-content-between my-3 align-items-center">
+                <span>Расчётная стоимость</span>
+                <div class="d-flex flex-column align-items-end">
+                    <span class="chost-font">Аренда</span>
+                    <span data-id="priceAll">
+                        9999
+                    </span>
+                </div>
+            </div>
+            
+            <hr class="w-100 hr-color">
+        </div>
+    </div>
+    <div>
+        <div class="d-flex flex-column">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Самовывоз
+                </label>
+            </div>
+            <span class="cart-font-size how-have-color">С адреса: г Пенза, ул Новосёловка, д 5</span>
+        </div>
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+                Доставка по г. Пенза
+            </label>
+        </div>
+        <div class="mt-3">
+            <button class="btn-color btn p-2 chose-date">Выберите дату и время</button>
+        </div>
+        <div class="mt-4">
+            <button class="btn btn-warning btn-cart-text py-2">
+                Арендовать
+            </button>
+        </div>`;
+            $('div[data-id="cart_Place"]').html(list);
+            calcPrice();
+            checkQuantity();
+        }
+        else {
+            list += '<h2><font color="gray">Корзина пуста</font></h2>';
+            $('div[data-id="cart_Place"]').addClass('clearCart');
+            $('div[data-id="cart_Place"]').html(list);
+        }
+    })
+}
+
+$(document).on('click', 'button[data-id="quantity_plus"]', function () {
+    var itemsId = $(this).parent().find('.quantity-col').data('id');
+    var itemsMaxQuantity = $(this).parent().parent().find('.maxquantity').data('id');
+
+    $.ajax({
+        url: '/api/Cart',
+        method: 'POST',//                        Увеличить quantity по кнопке
+        contentType: 'application/json',
+        data: JSON.stringify({
+            itemId: itemsId,
+            itemQuantity: itemsMaxQuantity
+        })
+    }).done(function () {
+        showCart();
+    })
+})
+
+$(document).on('click', 'button[data-id="quantity_minus"]', function () {
+    var itemsId = $(this).parent().find('.quantity-col').data('id');
+    var remove = 0;
+
+    $.ajax({
+        url: '/api/Cart/remove',//                       Уменьшить Quantity по кнопке
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            itemId: itemsId,
+            removeBool: remove
+        })
+    }).done(function () {
+        showCart();
+    })
+})
+$(document).on('click', 'button[data-action="Remove"]', function () {
+    var itemsId = $(this).parent().find('.quantity-col').data('id');
+    var remove = 1;
+
+    $.ajax({
+        url: '/api/Cart/remove',
+        method: 'POST',//                 Удалить записть из БД Cart
+        contentType: 'application/json',
+        data: JSON.stringify({
+            itemId: itemsId,
+            removeBool: remove
+        })
+    }).done(function () {
+        showCart();
+    })
+})
