@@ -6,7 +6,7 @@ namespace VseVeshi.ru.Models
     {
         public int Id { get; set; }
         public RentItems RentItems { get; set; }
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
         public int quantity { get; set; }
     }
 }

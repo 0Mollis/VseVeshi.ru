@@ -13,9 +13,9 @@ namespace VseVeshi.ru.Controller
     public class CartController : ControllerBase
     {
         private ApplicationDbContext _context;
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<ApplicationUser> _userManager;
 
-        public CartController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public CartController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;

@@ -11,9 +11,9 @@ namespace VseVeshi.ru.Pages
     public class CartModel : PageModel
     {
         private ApplicationDbContext _context;
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<ApplicationUser> _userManager;
 
-        public CartModel(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public CartModel(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;

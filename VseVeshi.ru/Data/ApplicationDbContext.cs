@@ -4,7 +4,7 @@ using VseVeshi.ru.Models;
 
 namespace VseVeshi.ru.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Catalog> Catalog { get; set; }
         public DbSet<UsersDB> UsersDB {  get; set; }
