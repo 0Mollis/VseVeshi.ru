@@ -1,44 +1,46 @@
 ﻿@page
 @model VseVeshi.ru.Pages.ItemModel
+@using VseVeshi.ru.Models
+@inject UserManager<ApplicationUser> userManager
 @{
     ViewData["Title"] = "Вещь";
 }
 
 @foreach(var item in Model.rentItems.Where(x => x.Id.ToString() == Model.SelectedItem))
 {  
-<div class="d-flex container justify-content-center margin-foter">
-    <div class="mt-5 me-5">
+    <div class="d-flex container justify-content-center margin-foter">
+        <div class="mt-5 me-5">
             <div class="item-img mb-5" style="background-image:url(@item.img) ">
-        </div>
-        <div class="description mt-5 p-2">
-            <div class="d-flex flex-column">
-                <span class="item-info">Информация о вещи</span>
-                <span class="item-description">@item.Description</span>
             </div>
-            <div class="pt-2 px-2">
-                <div class="item-data" data-id="@item.Id">
-                    <span class="font-transp">ID</span><span>@item.Id</span>
+            <div class="description mt-5 p-2">
+                <div class="d-flex flex-column">
+                    <span class="item-info">Информация о вещи</span>
+                    <span class="item-description">@item.Description</span>
                 </div>
-                <div class="item-data">
-                    <span class="font-transp">Тип</span><span>@item.type</span>
-                </div>
-                <div class="item-data">
-                    <span class="font-transp">Бренд</span><span>@item.brand</span>
-                </div>
-                <div class="item-data">
-                    <span class="font-transp">Цвет</span><span>@item.color</span>
-                </div>
-                <div class="item-data">
-                    <span class="font-transp">Пол</span><span>@item.gender</span>
-                </div>
+                <div class="pt-2 px-2">
+                    <div class="item-data" data-id="@item.Id">
+                        <span class="font-transp">ID</span><span>@item.Id</span>
+                    </div>
+                    <div class="item-data">
+                        <span class="font-transp">Тип</span><span>@item.type</span>
+                    </div>
+                    <div class="item-data">
+                        <span class="font-transp">Бренд</span><span>@item.brand</span>
+                    </div>
+                    <div class="item-data">
+                        <span class="font-transp">Цвет</span><span>@item.color</span>
+                    </div>
+                    <div class="item-data">
+                        <span class="font-transp">Пол</span><span>@item.gender</span>
+                    </div>
 
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="mt-5">
-        <div class="zakaz mb-5 p-2 d-flex flex-column justify-content-between">
-            <div>
+        <div class="mt-5">
+            <div class="zakaz mb-5 p-2 d-flex flex-column justify-content-between">
+                <div>
                     <span class="zakaz-name">
                         @item.Name
                     </span>
@@ -50,8 +52,8 @@
                             /@item.Days дня
                         </span>
                     </div>
-            </div>
-            <div>
+                </div>
+                <div>
                     <div class="">
                         <span class="quan">Количество</span>
                     </div>
@@ -67,56 +69,50 @@
                             <span class="how-have">Доступно</span><span class="maxquantity how-have mx-1">@item.quantity</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="">
+                    <button class="btn-warning btn w-100 btn-size" data-action="Item_to_cart">
+                        Добавить в корзину
+                    </button>
+                </div>
             </div>
-            
-            <div class="">
-@*                 <span class="days">
-                    Срок аренды
-                </span>
-                <div class="mt-2">
-                    <select class="form-select select-date select-all mb-3 w-100" aria-label="Default select example">
-                        <option selected>Выберите даты и время</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div> *@
-                <button class="btn-warning btn w-100 btn-size" data-action="Item_to_cart">
-                    Добавить в корзину
-                </button>
-            </div>
-        </div>
-            @foreach (var user in Model.usersDB.Where(x => item.userGiveId == x.Id))
+            @foreach (var items in Model.rentItems.Where(x => x.Id.ToString() == Model.SelectedItem))
             {
-                <div class="info-arend mb-5 p-2">
-                <span class="arend-zag mx-2">Арендодатель</span>
-                <div>
-                    <img class="info-img-size" src="Images/avatar.png">
-                    <span class="arend-name">@user.FirstName @user.LastName</span>
-                </div>
-                <div>
-                    <div class="item-data mt-2">
-                        <span class="font-transp">На сайте</span>
-                        <span>с 18.10.2024</span>
+                ApplicationUser user = await userManager.FindByIdAsync(items.userGiveId);
+                if(user != null)
+                {
+                    <div class="info-arend mb-5 p-2">
+                        <span class="arend-zag mx-2">Арендодатель</span>
+                        <div>
+                            <img class="info-img-size" src="Images/avatar.png">
+                            <span class="arend-name">@user.FirstName</span>
+                        </div>
+                        <div>
+                            <div class="item-data mt-2">
+                                <span class="font-transp">На сайте</span>
+                                <span>с 18.10.2024</span>
+                            </div>
+                            <div class="item-data mt-2">
+                                <span class="font-transp">Сдает в аренду</span>
+                                <span>@user.CountItem вещей</span>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-4">
+                            <div>
+                                <button class="btn-color btn-messag-size me-2">
+                                    Сообщение
+                                </button>
+                            </div>
+                            <div>
+                                <button class="btn-color btn-call">
+                                    <img src="Images/phone.svg">
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="item-data mt-2">
-                        <span class="font-transp">Сдает в аренду</span>
-                        <span>@user.CountItem вещей</span>
-                    </div>
-                </div>
-                <div class="d-flex mt-4">
-                    <div>
-                        <button class="btn-color btn-messag-size me-2">
-                            Сообщение
-                        </button>
-                    </div>
-                    <div>
-                        <button class="btn-color btn-call">
-                            <img src="Images/phone.svg">
-                        </button>
-                    </div>
-                </div>
-            </div>
+                }
+
             }
             
     </div>

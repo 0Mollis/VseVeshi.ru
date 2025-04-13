@@ -10,6 +10,8 @@ namespace VseVeshi.ru.Data
         public DbSet<UsersDB> UsersDB {  get; set; }
         public DbSet<RentItems> RentItems {  get; set; }
         public DbSet<Cart> carts { get; set; }
+        public DbSet<Orders> Orders { get; set; }
+        public DbSet<OrderItems> OrderItems { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

@@ -41,7 +41,7 @@
             <button id="filtr" class="btn btn-color w-50">Применить</button>
     </div>
     <div class="ms-4">
-        <div class="f-row row row-cols-3 row-cols-md-3 gap-4 h-100 justify-content-center">
+        <div class="f-row row row-cols-3 row-cols-md-3 h-100">
             @foreach(var card in Model.rentItems)
             {
                     <a asp-area="" asp-page="item" asp-route-Id="@card.Id" class="col card forCard">

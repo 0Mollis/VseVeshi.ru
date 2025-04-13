@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VseVeshi.ru.Data;
 
@@ -11,9 +12,11 @@ using VseVeshi.ru.Data;
 namespace VseVeshi.ru.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250412104817_4.5.7")]
+    partial class _457
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -278,69 +281,6 @@ namespace VseVeshi.ru.Data.Migrations
                     b.ToTable("Catalog");
                 });
 
-            modelBuilder.Entity("VseVeshi.ru.Models.OrderItems", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RentItemsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrdersId");
-
-                    b.HasIndex("RentItemsId");
-
-                    b.ToTable("OrderItems");
-                });
-
-            modelBuilder.Entity("VseVeshi.ru.Models.Orders", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Addres")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TimeOfOrder")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TypeOfOrder")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Orders");
-                });
-
             modelBuilder.Entity("VseVeshi.ru.Models.RentItems", b =>
                 {
                     b.Property<int>("Id")
@@ -391,9 +331,8 @@ namespace VseVeshi.ru.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("userGiveId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("userGiveId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -488,34 +427,6 @@ namespace VseVeshi.ru.Data.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("RentItems");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("VseVeshi.ru.Models.OrderItems", b =>
-                {
-                    b.HasOne("VseVeshi.ru.Models.Orders", "Orders")
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VseVeshi.ru.Models.RentItems", "RentItems")
-                        .WithMany()
-                        .HasForeignKey("RentItemsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Orders");
-
-                    b.Navigation("RentItems");
-                });
-
-            modelBuilder.Entity("VseVeshi.ru.Models.Orders", b =>
-                {
-                    b.HasOne("VseVeshi.ru.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });

@@ -237,7 +237,8 @@ $(document).on('click', 'input[data-id="itemBtnPost"]', function () {
                 brand: itemBrand,
                 color: itemColor,
                 gender: itemGender,
-                type: itemType
+                type: itemType,
+                userGiveId: "onServer"
             })
         })
     }
@@ -274,7 +275,8 @@ function calcPrice() {
         fullPrice += p;
     }
 
-    $('span[data-id="priceAll"]').text(fullPrice);
+    $('span[data-action="priceAll"]').text(fullPrice);
+    $('span[data-action="priceAll"]').attr("data-id", fullPrice);
 }
 
 function checkQuantity() {
@@ -349,7 +351,7 @@ function showCart() {
                 <span>Расчётная стоимость</span>
                 <div class="d-flex flex-column align-items-end">
                     <span class="chost-font">Аренда</span>
-                    <span data-id="priceAll">
+                    <span data-action="priceAll" data-id="9999">
                         9999
                     </span>
                 </div>
@@ -361,7 +363,7 @@ function showCart() {
     <div>
         <div class="d-flex flex-column">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input class="form-check-input" checked type="radio" name="flexRadioDefault" data-action="radioCheck" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                     Самовывоз
                 </label>
@@ -369,16 +371,36 @@ function showCart() {
             <span class="cart-font-size how-have-color">С адреса: г Пенза, ул Новосёловка, д 5</span>
         </div>
         <div class="form-check mt-2">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" data-action="radioCheck" id="flexRadioDefault2">
             <label class="form-check-label" for="flexRadioDefault2">
                 Доставка по г. Пенза
             </label>
         </div>
-        <div class="mt-3">
-            <button class="btn-color btn p-2 chose-date">Выберите дату и время</button>
+        <input class="form-control w-25 mt-3 error" data-id="inputText" placeholder="Ваш адрес"/>
+        <div class="mt-3 error" data-id="inputTime" data-action="time">
+            <button class="btn-color btn p-2 chose-date" data-bs-toggle="modal" data-bs-target="#dateTimeModal">Выберите дату и время</button>
         </div>
+            <div class="modal fade" id="dateTimeModal" tabindex="-1" aria-labelledby="dateTimeModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content w-75">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="dateTimeModalLabel">Выберите дату и время</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="date" data-id="selectedDate" class="form-control">
+                            <input type="time" data-id="selectedTime" class="form-control mt-2">
+                            <span class="error" data-id="selectError">Выберите корректную дата-время</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="button" class="btn btn-primary" data-action="saveDateTime">Сохранить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <div class="mt-4">
-            <button class="btn btn-warning btn-cart-text py-2">
+            <button class="btn btn-warning btn-cart-text py-2" data-action="order">
                 Арендовать
             </button>
         </div>`;
@@ -441,5 +463,138 @@ $(document).on('click', 'button[data-action="Remove"]', function () {
         })
     }).done(function () {
         showCart();
+    })
+})
+
+$(document).on('click', 'input[data-action="radioCheck"]', function () {
+    var input = $('input[data-action="radioCheck"]:checked');
+    var inputText = $('input[data-id="inputText"]');
+    var inputTime = $('div[data-id="inputTime"]');
+
+    if (input.attr('id') == 'flexRadioDefault2') {
+        inputText.removeClass('error');
+        inputTime.removeClass('error');
+    }
+    else {
+        inputText.addClass('error');
+        inputTime.addClass('error');
+    }
+})
+
+$(document).on('click', '[data-action="saveDateTime"]', function () {
+    var selectedDate = $('[data-id="selectedDate"]').val();
+    var selectedTime = $('[data-id="selectedTime"]').val();
+    var inputTime = $('div[data-id="inputTime"]');
+
+    if (selectedDate != "" && selectedTime != "") {
+        $('#dateTimeModal').on('show.bs.modal', function (e) {
+            $(this).removeAttr('inert');
+        });
+
+        var today = new Date;
+
+        const year = today.getFullYear();
+        const month = (today.getMonth() + 1).toString().padStart(2, '0');
+        const days = today.getDate().toString().padStart(2, '0');
+
+        var day = `${year}-${month}-${days}`;
+
+        if (selectedDate > day) {
+
+            var selectedDateTime = selectedDate + " " + selectedTime;
+            console.log("Выбранная дата и время: " + selectedDateTime);
+
+            $('[data-id="selectError"]').addClass('error');
+            $('#dateTimeModal').attr('inert', '');
+            $('#dateTimeModal').modal('hide');
+            inputTime.attr('data-id', selectedDateTime);
+        }
+        else {
+            $('[data-id="selectError"]').removeClass('error');
+            $('[data-id="selectError"]').addClass('text-red');
+        }
+    }
+    else {
+        $('[data-id="selectError"]').removeClass('error');
+        $('[data-id="selectError"]').addClass('text-red');
+    }
+});
+
+$(document).on('click', 'button[data-action="order"]', function () {
+    var radio = $('input[data-action="radioCheck"]:checked');
+    var inputTime = $('div[data-action="time"]').attr('data-id');
+    var inputText = $('input[data-id="inputText"]').val();
+    var totalPrice = $('span[data-action="priceAll"]').attr("data-id");
+    var typeOfOrder = null;
+
+    if (radio.attr('id') == 'flexRadioDefault1') {
+        typeOfOrder = "Самовывоз";
+        inputText = "Нет";
+        inputTime = "Нет";
+
+        $.ajax({
+            url: '/api/Order/MakeOrder',
+            method: 'POST',//                 Создание заказа без доставки
+            contentType: 'application/json',
+            data: JSON.stringify({
+                Addres: inputText,
+                Time: inputTime,
+                TotalPrice: totalPrice,
+                TypeOfOrder: typeOfOrder
+            })
+        }).done(function () {
+            showCart();
+        })
+
+        console.log('just ajax');
+    }
+    else if (radio.attr('id') == 'flexRadioDefault2') {
+
+        if (inputTime != '' && inputText != '') {
+            typeOfOrder = "Доставка";
+
+
+
+            console.log('from input to ajax' + inputTime + ' ' + inputText);
+        }
+    }
+})
+
+function showOrders() {
+    $.ajax({
+        url: 'api/Order/orders',
+        method: 'GET'
+    }).done((data) => {
+        var list = '';
+
+        $.each(data, function () {
+            list += `
+        <div data-id="${this.id}" class="mb-3">
+            <span>Номер заказа: ${this.id} </span><span>Почта пользователя: ${this.user.email} </span><span>Тип получения: ${this.typeOfOrder} </span><span>Стоимость ${this.totalPrice} руб. </span><span>Статус: ${this.status} </span>`
+            if (this.status == "Создан")
+            {
+                list += `<button class="btn bg-warning normal-btn" data-action="changeStatus">Изменить статус</button>`
+            }
+        list+= `</div>`
+        })
+
+        $('.order-container').html(list);
+    })
+}
+
+if (window.location.pathname == '/Orders') {
+    showOrders();
+}
+
+$(document).on('click', 'button[data-action="changeStatus"]', function () {
+    var orderId = $(this).parent().attr('data-id'); 
+
+    $.ajax({
+        url: 'api/Order',
+        method: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify(orderId)           
+    }).done(function () {
+        showOrders();
     })
 })

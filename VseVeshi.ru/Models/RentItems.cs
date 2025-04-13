@@ -14,6 +14,6 @@
         public string brand { get; set; }
         public string color { get; set; }
         public string gender { get; set; }
-        public int userGiveId { get; set; }
+        public string userGiveId { get; set; }
     }
 }
