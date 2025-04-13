@@ -4,7 +4,7 @@
     ViewData["Title"] = "Каталог";
 }
 <div class="container mt-5 d-flex margin-foter">
-    <div class="d-flex flex-column align-items-end w-25">
+    <div class="d-flex flex-column align-items-end widthFiltr">
             <select class="form-select select-date select-all mb-3" aria-label="Default select example">
                 <option selected value="0">Дата аренды</option>
                 <option value="1">3 дня</option>
@@ -41,10 +41,10 @@
             <button id="filtr" class="btn btn-color w-50">Применить</button>
     </div>
     <div class="ms-4">
-        <div class="f-row row row-cols-3 row-cols-md-3 h-100">
+        <div class="f-row row row-cols-3 row-cols-md-3 h-100 gap-4">
             @foreach(var card in Model.rentItems)
             {
-                    <a asp-area="" asp-page="item" asp-route-Id="@card.Id" class="col card forCard">
+                <a asp-area="" asp-page="item" asp-route-Id="@card.Id" class="col card forCard text-dec-none">
                         <img src="@card.img" class="card-img-top imgForCard">
                         <div class="card-body">
                             <div class="card-title">

@@ -2,6 +2,7 @@
 @using VseVeshi.ru.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@inject ICatalogService CatalogService
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,13 +55,16 @@
                                     <h3 class="mx-5 mt-2 mb-3">Меню</h3>
                                     <ul>
                                         <li class="nav-item">
-                                            <a class="nav-link active text-green" aria-current="page" href="#">Главная</a>
+                                            <a class="nav-link active text-green" aria-current="page" href="/Index">Главная</a>
                                         </li>
                                         <li class="nav-item text-green">
-                                            <a class="nav-link text-green" href="#">Каталог</a>
+                                            <a class="nav-link text-green" href="/Catalog?Search=&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0">Каталог</a>
+                                        </li>
+                                        <li class="nav-item text-green">
+                                            <a class="nav-link text-green" href="/Cart">Корзина</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-green" href="#">О сервисе</a>
+                                            <a class="nav-link text-green" href="aboutUs">О сервисе</a>
                                         </li>
                                         @{
                                             var user = await UserManager.GetUserAsync(User);
@@ -83,7 +87,7 @@
                                         }
                                         <li class="nav-item">
                                             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
-                                                <button type="submit" class="btn normal-btn btn-link text-red">Выход</button>
+                                                <button type="submit" class="text-dec-none btn normal-btn btn-link text-red">Выход</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -103,42 +107,35 @@
                     </div>
                 </nav>
                 <div class="container d-flex justify-content-evenly background-catalog">
-                    <div>
-                        <span>
-                            Медицина
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            Смокинг
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            Платья
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            Туризм
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            Для отдыха
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            Для мероприятий
-                        </span>
-                    </div>
-                    <div>
-                        <span>
+                    @{
+                        var allCatalogs = CatalogService.GetAll();
+                        for(var i = 0;i < 4; i++)
+                        {
+                            allCatalogs.AddRange(CatalogService.GetAll());// Проверка верхнего каталога
+                        }
+                        var firstSix = allCatalogs.Take(6).ToList();
+                        var beforeSix = allCatalogs.Skip(6).ToList();
+                    }
+                    @foreach(var catalog in firstSix)
+                    {
+                        <div>
+                            <a class="nav-link" href="/Catalog?category=@catalog.Name&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0">
+                                @catalog.Name
+                            </a>
+                        </div>
+                    }
+                    @if (beforeSix.Any())
+                    {
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Ещё
-                        </span>
-                    </div>
-
+                        </a>
+                        <ul class="dropdown-menu">
+                            @foreach (var catalog in beforeSix)
+                            {
+                                <li><a class="text-black dropdown-item" href="/Catalog?category=@catalog.Name&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0">@catalog.Name</a></li>
+                            }
+                        </ul>
+                    }
                 </div>
             </header>
         }
@@ -150,9 +147,9 @@
     </div>
 
     <footer class="footerc text-light">
-        <div class="mt-2 innerFooter pt-5" style="height: 315px;">
-            <div class="container p-0">
-                <div class="d-flex justify-content-evenly">
+        <div class="innerFooter">
+            <div class="container p-0 d-flex flex-column footerContainer justify-content-between mt-2">
+                <div class="d-flex justify-content-evenly mt-5 mb-3">
                     <div>
                         <table>
                             @* Арендаторам *@
@@ -163,7 +160,9 @@
                             </tr>
                             <tr>
                                 <td>
-                                    О сервисе
+                                    <a class="text-dec-none text-light" href="/aboutUs">
+                                        О сервисе
+                                    </a>
                                 </td>
                             </tr>
                          </table>
@@ -172,7 +171,7 @@
                         <table>
                             @* О компании *@
                             <tr>
-                                <td>
+                                <td class="footerColName">
                                     О компании
                                 </td>
                             </tr>
@@ -191,40 +190,50 @@
                     <div>
                         <table>
                             <tr>
-                                <td>
+                                <td class="footerColName">
                                     Категории
                                 </td>
                             </tr>
+                            @{
+                                var allCatalogsFoter = CatalogService.GetAll();
+                                for (var i = 0; i < 4; i++)
+                                {
+                                    allCatalogsFoter.AddRange(CatalogService.GetAll());// Проверка верхнего каталога
+                                }
+                                var firstSixFoter = allCatalogsFoter.Take(4).ToList();
+                                var beforeSixFoter = allCatalogsFoter.Skip(4).ToList();
+                            }
+                            @foreach (var catalog in firstSixFoter)
+                            {
+                                <tr>
+                                    <td>
+                                        <a class="text-light normal-link-noColor" href="/Catalog?category=@catalog.Name&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0">
+                                            @catalog.Name
+                                        </a>
+                                    </td>
+                                </tr>                               
+                            }
+                            @if (beforeSixFoter.Any())
+                            {
                             <tr>
                                 <td>
-                                    Медицина
+                                    <a class="text-light text-dec-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Ещё
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @foreach (var catalog in beforeSixFoter)
+                                        {
+                                            <li><a class="text-black dropdown-item" href="/Catalog?category=@catalog.Name&SelectDate=0&SelectPrice=0&SelectBrand=0&SelectColor=0&SelectGender=0">@catalog.Name</a></li>
+                                        }
+                                    </ul>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    Смокинг
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Платья туризм
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Для отдыха
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Для мероприятий
-                                </td>
-                            </tr>
+                            }
                         </table>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center mt-4 pt-5">
-                    &copy; 2025 - ВсеВещи.ру - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                <div class="d-flex justify-content-center mt-5">
+                    &copy; 2025 - ВсеВещи.ру
                 </div>
             </div>  
         </div>

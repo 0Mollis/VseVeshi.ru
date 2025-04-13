@@ -598,3 +598,15 @@ $(document).on('click', 'button[data-action="changeStatus"]', function () {
         showOrders();
     })
 })
+
+function updateMarginBottom() {
+    var footer = document.querySelector('.footerc');
+    var content = document.querySelector('.margin-foter');
+
+    if (footer && content) {
+        var footerHeight = footer.offsetHeight + 25; 
+        content.style.marginBottom = footerHeight + 'px'; 
+    }
+}
+
+window.addEventListener('load', updateMarginBottom);
