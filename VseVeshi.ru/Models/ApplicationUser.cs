@@ -6,5 +6,6 @@ namespace VseVeshi.ru.Models
     {
         public string FirstName { get; set; }
         public int CountItem { get; set; }
+        public string DateOfRegistration { get; set; }
     }
 }

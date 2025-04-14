@@ -19,6 +19,11 @@
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3">
+                    <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="username" aria-required="true" placeholder="88005353555" />
+                    <label asp-for="Input.PhoneNumber">Телефон</label>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
                     <input asp-for="Input.FirstName" class="form-control" autocomplete="username" aria-required="true" placeholder="Иван" />
                     <label asp-for="Input.FirstName">Ваше имя</label>
                     <span asp-validation-for="Input.FirstName" class="text-danger"></span>

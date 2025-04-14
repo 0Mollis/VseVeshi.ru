@@ -858,3 +858,13 @@ body {
 .footerContainer{
     height: 100%;
 }
+
+.socialImg{
+    width: 40px;
+    height: 40px;
+}
+
+.telegram{
+    width:33px !important;
+    height:33px !important;
+}

@@ -553,7 +553,19 @@ $(document).on('click', 'button[data-action="order"]', function () {
         if (inputTime != '' && inputText != '') {
             typeOfOrder = "Доставка";
 
-
+            $.ajax({
+                url: '/api/Order/MakeOrder',
+                method: 'POST',//                 Создание заказа без доставки
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    Addres: inputText,
+                    Time: inputTime,
+                    TotalPrice: totalPrice,
+                    TypeOfOrder: typeOfOrder
+                })
+            }).done(function () {
+                showCart();
+            })
 
             console.log('from input to ajax' + inputTime + ' ' + inputText);
         }

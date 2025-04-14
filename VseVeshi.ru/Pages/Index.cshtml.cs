@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VseVeshi.ru.Data;
 using VseVeshi.ru.Models;
@@ -17,12 +17,14 @@ namespace VseVeshi.ru.Pages
         }
 
         public List<Catalog> catalog;
+        public List<RentItems> rentItems;
 
         private ApplicationDbContext _context;
 
         public void OnGet()
         {
             catalog = _context.Catalog.ToList();
+            rentItems = _context.RentItems.ToList();
         }
     }
 }

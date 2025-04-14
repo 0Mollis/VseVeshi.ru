@@ -41,6 +41,7 @@ namespace VseVeshi.ru.Controller
 
             foreach (var cart in cartData) {
                 orders.Add(new OrderItems { Orders = order, RentItems = cart.RentItems, Quantity = cart.quantity });
+                cart.RentItems.quantity -= cart.quantity;
             }
        
             _context.OrderItems.AddRange(orders);

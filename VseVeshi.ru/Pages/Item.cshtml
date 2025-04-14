@@ -91,7 +91,7 @@
                         <div>
                             <div class="item-data mt-2">
                                 <span class="font-transp">На сайте</span>
-                                <span>с 18.10.2024</span>
+                                <span>с @user.DateOfRegistration</span>
                             </div>
                             <div class="item-data mt-2">
                                 <span class="font-transp">Сдает в аренду</span>
@@ -100,14 +100,35 @@
                         </div>
                         <div class="d-flex mt-4">
                             <div>
-                                <button class="btn-color btn-messag-size me-2">
+                                <button class="btn-color btn-messag-size me-2" data-bs-toggle="modal" data-bs-target="#phoneModal">
                                     Сообщение
                                 </button>
                             </div>
                             <div>
-                                <button class="btn-color btn-call">
+                                <button class="btn-color btn-call" data-bs-toggle="modal" data-bs-target="#phoneModal">
                                     <img src="Images/phone.svg">
                                 </button>
+                            </div>
+                            <div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="phoneModalLabel">Номер телефона</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Номер телефона: @user.PhoneNumber</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                            <!--  Дополнительные кнопки (например, позвонить или отправить сообщение) -->
+                                            <!--
+                                            <button type="button" class="btn btn-primary">Позвонить</button>
+                                            <button type="button" class="btn btn-success">Отправить сообщение</button>
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

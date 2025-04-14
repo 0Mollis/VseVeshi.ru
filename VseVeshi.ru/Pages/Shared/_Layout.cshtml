@@ -95,7 +95,7 @@
                             }
                             else
                             {
-                                <a asp-area="Identity" asp-page="/Account/Login">
+                                <a asp-area="Identity" asp-page="/Account/Login" class="text-dec-none">
                                     <button class="enter-btn-container d-flex justify-content-center align-items-center border-0">
                                         <span class="enter-btn">
                                             Войти
@@ -177,12 +177,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Документы
+                                    <a class="text-dec-none text-light" href="#">
+                                        Документы
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    Контакты
+                                    <a class="text-dec-none text-light" href="#">
+                                        Контакты
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -229,6 +233,40 @@
                                 </td>
                             </tr>
                             }
+                        </table>
+                    </div>
+                    <div>
+                        <table>
+                            @* Соцсети *@
+                            <tr>
+                                <td class="footerColName">
+                                    Мы в соцсетях
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a class="text-dec-none text-light" href="#">
+                                        <img class="socialImg" src="/Images/VKontakte-white.svg"/>
+                                    </a>
+                                    <a class="text-dec-none text-light" href="#">
+                                        <img class="socialImg telegram" src="/Images/telegram-white.svg" />
+                                    </a>
+                                    <a class="text-dec-none text-light" href="#">
+                                        <img class="socialImg" src="/Images/whatsapp.svg"/>
+                                    </a>
+                                    <a class="text-dec-none text-light" href="#">
+                                        <img class="socialImg" src="/Images/instagram.svg"/>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a class="text-dec-none text-light" href="#">
+                                        <img class="socialImg telegram" src="/Images/facebook.svg" />
+                                    </a>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </div>

@@ -71,6 +71,9 @@ namespace VseVeshi.ru.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required(ErrorMessage = "Телефон не должно быть пустым")]
+            public string PhoneNumber { get; set; }
+
             [Required(ErrorMessage = "Имя не должно быть пустым")]
             public string FirstName { get; set; }
 
@@ -119,6 +122,8 @@ namespace VseVeshi.ru.Areas.Identity.Pages.Account
                 var user = CreateUser();
 
                 user.FirstName = Input.FirstName;
+                user.PhoneNumber = Input.PhoneNumber;
+                user.DateOfRegistration = DateTime.UtcNow.ToString("dd-MM-yyyy");
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

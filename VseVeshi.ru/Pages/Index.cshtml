@@ -201,146 +201,42 @@
     <span class="zagRng">Что арендуют в <font color="green">Пензе</font>?</span>
     <div class="mt-5">
         <div class="row row-cols-5 row-cols-md-5 gap-4 h-100">
-            <div class="col card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card forCard">
-                <img src="Images/moika.png" class="card-img-top imgForCard">
-                <div class="card-body">
-                    <div class="card-title">
-                        <span class="card-title-font">
-                            <span class="">1 400 руб.</span>
-                            <span class="card-title-font-days">/3дня</span>
-                        </span>
-                    </div>
-                    <div class="card-text">
-                        <span>Робот-мойщик окон Mamibot W110-T</span>
-                    </div>
-                </div>
-            </div>
+            @{
+                List<RentItems> showItemIndex = new List<RentItems>();
+
+                for (var i = 0; i != 1; i++)
+                {
+                    if (Model.rentItems.Count() < 10 && showItemIndex.Count() < 10)
+                    {
+                        showItemIndex.AddRange(Model.rentItems);
+                        i--;
+                    }
+                    else
+                    {
+                        foreach (var card in showItemIndex.Take(10))
+                        {
+                            if(card.quantity != 0)
+                            {
+                                <a asp-area="" asp-page="item" asp-route-Id="@card.Id" class="col card forCard text-dec-none">
+                                    <img src="@card.img" class="card-img-top imgForCard">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <span class="card-title-font">
+                                                <span class="">@card.Price руб.</span>
+                                                <span class="card-title-font-days">/@card.Days дня</span>
+                                            </span>
+                                        </div>
+                                        <div class="card-text">
+                                            <span>@card.Name</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                            
+                        }                       
+                    }
+                }                
+            }
         </div>
     </div>
 </div>
