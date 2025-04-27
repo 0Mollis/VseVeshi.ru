@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using VseVeshi.ru.Models;
 
 namespace VseVeshi.ru.Pages
 {
+    [Authorize]
     public class CartModel : PageModel
     {
         private ApplicationDbContext _context;
