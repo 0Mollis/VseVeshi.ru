@@ -555,7 +555,7 @@ $(document).on('click', 'button[data-action="order"]', function () {
 
             $.ajax({
                 url: '/api/Order/MakeOrder',
-                method: 'POST',//                 Создание заказа без доставки
+                method: 'POST',//                 Создание заказа доставки
                 contentType: 'application/json',
                 data: JSON.stringify({
                     Addres: inputText,

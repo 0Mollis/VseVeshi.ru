@@ -2,7 +2,7 @@
 @model VseVeshi.ru.Pages.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редактирование";
 }
 <div class="container margin-foter mt-2">
     <h1>Редактирование</h1>
@@ -18,7 +18,7 @@
         <h4 class="mt-2">Выберите предмет по id</h4>
         <input type="text" placeholder="id" data-id="input-id">
         <br />        
-        <button class="search-id-btn mt-2 btn btn-primary">Подтвердить</button>
+        <button class="search-id-btn mt-2 btn btn-warning">Подтвердить</button>
         <span class="error">Выбрано два id</span>
     </div>
     <hr />
@@ -93,7 +93,7 @@
                     <span asp-validation-for="RentItems.userGiveId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary mt-3" />
+                    <input type="submit" value="Save" class="btn btn-warning text-dark mt-3" />
                 </div>
             </form>
                    

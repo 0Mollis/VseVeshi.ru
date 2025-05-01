@@ -78,7 +78,7 @@ body {
     display: flex;
     color: #ffffff;
     text-align: left;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 18px;
     font-weight: 500;
     text-shadow: 1px 1px 0px black;
@@ -91,7 +91,7 @@ body {
 
 .searchText {
     color: #ffffff;
-    font-family: "Inter-SemiBold", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     font-weight: 600;
     text-shadow: 1px 1px 0px black;
@@ -109,7 +109,7 @@ body {
 .zagRent {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 26px;
     font-weight: 500;
 }
@@ -127,7 +127,7 @@ body {
 .zagKatalog {
     color: #ffffff;
     text-align: center;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 26px;
     font-weight: 500;
     text-shadow: 1px 1px 1px black;
@@ -145,7 +145,7 @@ body {
 .rentCardName {
     color: #000000;
     text-align: left;
-    font-family: "Jost-Medium", sans-serif;
+    font-family: "Jost", sans-serif;
     font-size: 22px;
     font-weight: 500;
 }
@@ -153,20 +153,20 @@ body {
 .cardText {
     color: #000000;
     text-align: justify;
-    font-family: "Inter-Light", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     font-weight: 300;
 }
 
 .btnEnter {
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 400;
 }
 
 .linkServis {
     color: #ffffff !important;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 500;
 }
@@ -180,6 +180,10 @@ body {
     height: 65%;
 }
 
+.imgForCard{
+    min-height:190px;
+    max-height:190px;
+}
 /**/
 .catalog-container {
     display: flex;
@@ -216,7 +220,7 @@ body {
 .catalog-text {
     color: #ffffff;
     text-align: center;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 18px;
     font-weight: 400;
     text-shadow: 1px 1px 1px black;
@@ -238,7 +242,7 @@ body {
 
 .zagRng {
     text-align: center;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 26px;
     font-weight: 500;
 }
@@ -261,14 +265,14 @@ body {
 
 .card-title-font {
     color: #000000;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 500;
 }
 
 .card-title-font-days {
     color: rgba(0, 0, 0, 0.4);
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 500;
 }
@@ -276,10 +280,10 @@ body {
 .card-text {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
     font-weight: 500;
-    overflow:hidden;
+    overflow: hidden;
     position: relative;
     width: 100%;
     height: 100%;
@@ -292,7 +296,7 @@ body {
 .aboutUs-zag {
     color: #182013;
     text-align: left;
-    font-family: "Inter-Bold", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 52px;
     line-height: 121.06%;
     font-weight: 700;
@@ -302,7 +306,7 @@ body {
 .aboutUs-str {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Light", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     line-height: 121.06%;
     font-weight: 300;
@@ -312,7 +316,7 @@ body {
 .aboutUs-fot {
     color: #000000;
     text-align: left;
-    font-family: "Inter-SemiBold", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     line-height: 121.06%;
     font-weight: 600;
@@ -407,7 +411,7 @@ body {
     border-radius: .25rem;
     color: #000000;
     text-align: center;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 400;
 }
@@ -476,14 +480,13 @@ body {
 
 .description {
     width: 700px;
-    height: 261px;
     box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.5);
 }
 
 .item-info {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     font-weight: 500;
 }
@@ -491,7 +494,7 @@ body {
 .item-description {
     color: #000000;
     text-align: justify;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 400;
 }
@@ -499,7 +502,7 @@ body {
 .font-transp {
     color: #8b8b8b;
     text-align: left;
-    font-family: "Inter-Light", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 14px;
     font-weight: 300;
 }
@@ -513,21 +516,21 @@ body {
 .zakaz-name {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     font-weight: 500;
 }
 
 .Chost {
     color: #000000;
-    font-family: "Inter-SemiBold", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 32px;
     font-weight: 600;
 }
 
 .how-day {
     color: rgba(0, 0, 0, 0.36);
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 400;
 }
@@ -535,7 +538,7 @@ body {
 .quan {
     color: #acabab;
     text-align: center;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
     font-weight: 400;
 }
@@ -543,7 +546,7 @@ body {
 .how-have {
     color: #acabab;
     text-align: center;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
     font-weight: 400;
 }
@@ -551,7 +554,7 @@ body {
 .days {
     color: #acabab;
     text-align: center;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
     font-weight: 400;
 }
@@ -577,7 +580,7 @@ body {
 .arend-zag {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     font-weight: 500;
 }
@@ -585,7 +588,7 @@ body {
 .arend-name {
     color: #000000;
     text-align: justify;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 400;
 }
@@ -627,7 +630,7 @@ body {
 .cart-zag {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 22px;
     font-weight: 500;
 }
@@ -635,7 +638,7 @@ body {
 .arend-giver {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Light", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 300;
 }
@@ -643,7 +646,7 @@ body {
 .arend-giver-name {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Regular", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
     font-weight: 400;
 }
@@ -651,7 +654,7 @@ body {
 .chose-date {
     color: #414141;
     text-align: center;
-    font-family: "Inter-Light", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 300;
 }
@@ -659,7 +662,7 @@ body {
 .item-card-name {
     color: #000000;
     text-align: left;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
     font-weight: 500;
 }
@@ -667,7 +670,7 @@ body {
 .chost-font {
     color: #a6a6a6;
     text-align: right;
-    font-family: "Inter-Light", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
     font-weight: 300;
 }
@@ -675,7 +678,7 @@ body {
 .btn-cart-text {
     color: #ffffff;
     text-align: center;
-    font-family: "Inter-Medium", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 18px;
     font-weight: 500;
     width: 170px;
